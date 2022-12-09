@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page
+{% endblock %}
+
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">About your request</span>
+
+        <form action="" method="post">
+          <h1 class="govuk-heading-l">Other ways you can give us your energy information</h1>
+          
+          <p>You should be able to get a copy of your bills from your energy provider.</p>
+
+          <p>If you have saved your energy information in a different format, like a document or spreadsheet, you can upload this instead. For us to support you, we'll need to know:</p>
+          
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your current energy provider</li>
+            <li>when your current contract ends</li>
+            <li>how much energy you use</li>
+            <li>what tariff you are on</li>
+            <li>how many meters you have</li>
+          </ul>
+          
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          <p><a href="choose-signin">I have another query that is not related to energy</a></p>
+
+        </form>
+    </div>
+  </div>
+{% endblock %}

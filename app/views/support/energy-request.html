@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+{% set title = "Is your request about energy?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <span class="govuk-caption-l">About your request</span>
+
+          {% set html %}
+            <p>You can read our guidance about <a href="https://www.gov.uk/guidance/buying-for-schools/energy">buying energy for your school</a>. It includes:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>whether you can get a reduced rate VAT</li>
+              <li>how to choose between fixed, flexible or variable price contracts</li>
+              <li>what to think about when choosing contract length</li>
+            </ul>
+          {% endset %}
+
+          {{ govukRadios({
+            idPrefix: "energy-request",
+            name: "energy-request",
+            fieldset: {
+              legend: {
+                text: title,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              html: html
+            },
+            items: [       
+            {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+    </div>
+  </div>
+{% endblock %}

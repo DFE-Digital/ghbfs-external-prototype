@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+{% set title = "Do you have a recent energy bill you can upload?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/energy-request-about"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        <span class="govuk-caption-l">About your request</span>
+          {% set titleText %}
+            <p>Your recent energy bills give us the information we need to help you. You'll be able to upload more than one bill if you have them.</p>
+            <p>We'll review your bills and use the information to suggest a suitable framework for buying energy. We won't share this information without your permission.</p>
+          {% endset %}
+
+          {{ govukRadios({
+            idPrefix: "have-energy-bill",
+            name: "have-energy-bill",
+            fieldset: {
+              legend: {
+                text: title,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              html: titleText
+            },
+            items: [       
+            {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+    </div>
+  </div>
+{% endblock %}

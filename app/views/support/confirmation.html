@@ -1,0 +1,26 @@
+{% extends "layouts/main.html" %}
+{% set title = "Which school are you buying for?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">  
+        {{ govukPanel({
+          titleText: "Your request has been sent",
+          html: "We have sent a confirmation email to: admin@school.com"
+        }) }}
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p>The Get help buying for schools team will now review your request and energy bills if you've sent them. We'll be in touch within 2 working days to find a convenient time to discuss your options.</p>     
+        <p>If you chose to email your bills, there will be instructions in the confirmation email telling you how to do this.</p>
+        <p>Please check to make sure you receive an email confirmation from us within the next 10 minutes. Check your junk folder if you do not see it. </p> 
+        <p>You'll need to submit your request again if you do not receive an email from us because this is how we'll be contacting you.</p>
+        <h2 class="govuk-heading-m">What you can do next</h2>
+        <p>You can read our guidance about <a href="">buying energy for your school</a>. It includes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>whether you can get a reduced rate VAT</li>
+          <li>how to choose between fixed, flexible or variable price contracts</li>
+          <li>what to think about when choosing contract length</li>
+        </ul>
+    </div>
+  </div>
+{% endblock %}

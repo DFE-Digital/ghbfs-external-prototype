@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/_faf-inset-top.html" %}
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Heating systems and renewable technology</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Fusion21 framework.</p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <p>A range of services from consultancy to design, servicing, maintenance and installation plus a selection of renewable technology applications</p>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>regional coverage and facilitates local delivery </li>
+      <li>supply partners appointed based on sector experience, competence and capability </li>
+      <li>robust framework specifications that can be further tailored to your requirements during a mini-competition</li>
+      </ul>
+    </div>
+
+    <p class="govuk-body">All frameworks also offer:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>compliance with The Official Journal of the European Union (OJEU) principles and regulations</li>
+      <li>a list of checked suppliers</li>
+      <li>pre-agreed terms and conditions</li>
+    </ul>
+
+    <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.fusion21.co.uk/frameworks/framework-index/lot-10-department-for-education-education-specific/",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+   
+  </div>
+</div>
+{% endblock %}

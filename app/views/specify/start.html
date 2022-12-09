@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/step-by-step-nav.js"></script>
+  
+  <script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.AppStepNav()
+    stepByStepNavigation.start($element)
+  </script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+
+  <div class="app-step-nav-header">
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="../index">Buy goods or services for your school: step by step</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Create a specification to procure for your school
+      </h1>
+      <p>Use this service to create a specification for either:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a catering service, or</li>
+        <li>multi-functional devices</li>
+      </ul>
+      <p>You’ll be able to download the specification that you create and share it with suppliers when you invite them to bid.</p>
+      <p class="govuk-body">You can use this service if you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are procuring for a single school in England - either a local authority maintained school or an academy in a single or multi-academy trust</li>
+        <li>are procuring a single contract</li>
+      </ul>
+      <a href="sign-in" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
+        Start
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40"  focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+       <h2 class="govuk-heading-m">Before you start</h2>
+      <p class="govuk-body">The service will guide you through what information to provide. Standard regulations and requirements that suppliers must comply with will be added automatically.</p>
+      <p class="govuk-body">You can save your specification and come back to it later if you want.</p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      {% include "../includes/_step-by-step-specify.html" %}
+    </div>
+  </div>
+{% endblock %}

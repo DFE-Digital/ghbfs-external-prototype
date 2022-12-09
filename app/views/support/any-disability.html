@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any conditions or disabilities which have an impact on how you use technology and/or online services?
+{% endblock %}
+
+{% block header %}
+  {% if data['signin'] == "dsi" %}
+    {% include "includes/logged-in-user.html" %}
+  {% else %}
+    {% include "includes/no-log-in-user.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+
+{% if data['specification'] == null or data['specification'] == '' %}
+  {% set backURL = 'what-are-you-buying' %}
+{% else %}
+  {% set backURL = 'choose-specification' %}
+{% endif %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Special requirements</span>
+
+      <form action="what-disability" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you have any conditions or disabilities which have an impact on how you use technology and/or online services?
+            </h1>
+          </legend>
+      <!-- <div id="contact-hint" class="govuk-hint">
+        Select one option.
+      </div> -->
+
+      <div id="email-hint" class="govuk-hint">
+        This will help us to adapt our service and advice that we give.
+      </div>
+
+      <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="No~special-requirement">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="Prefer not to say~special-requirement">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+    </fieldset>
+  </div>
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+  </div>
+</div>
+{% endblock %}

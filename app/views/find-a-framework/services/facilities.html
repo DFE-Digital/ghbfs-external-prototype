@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    {% include "includes/_faf-inset-top.html" %}
+
+    <form action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">What services are you looking for in facilities management and estates?</h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories" name="sub-category" type="radio" value="Buildings maintenance~facilities/building-maintenance">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories">Buildings maintenance</label>   
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-2" name="sub-category" type="radio" value="Buildings safety~facilities/buildings-safety">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-2">Buildings safety</label>  
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-3" name="sub-category" type="radio" value="Catering~facilities/catering">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-3">Catering</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-4" name="sub-category" type="radio" value="Cleaning~facilities/cleaning">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-4">Cleaning</label>  
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-5" name="sub-category" type="radio" value="Construction consultancy~facilities/construction">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-5">Construction consultancy</label>   
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-6" name="sub-category" type="radio" value="Estates management professional services~facilities/specialist">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-6">Estates management professional services</label>     
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-7" name="sub-category" type="radio" value="Sports facilities~facilities/sports-facilities">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-7">Sports facilities</label>   
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-fm-categories-8" name="sub-category" type="radio" value="Total facilities management~facilities/wfm">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-fm-categories-8">Total facilities management</label> 
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+    
+    {% include "../../includes/_previous-answers.html" %}
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+{% set title = "Is this your contact information?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/sign-in"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        <span class="govuk-caption-l">About you</span>
+      
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>If these details are not correct, you can either:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>log in with the correct account, or</li>
+          <li><a href="https://pp-profile.signin.education.gov.uk/edit-details">amend your DfE Sign-in account details</a></li>
+        </ul>
+      
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Test User"
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: "admin@school.com"
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Yes, continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

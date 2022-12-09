@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Create a new specification
+{% endblock %}
+
+{% block header %}
+  {% include "includes/logged-in-user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
+}) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: " ../create-specification"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="create-specification" method="POST">
+        {{ govukInput({
+          label: {
+            text: "Name your specification",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "This will help you to find it if you need to come back to it later. Use a maximum of 30 characters."
+          },
+          id: "specification-name",
+          name: "specification-name"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>      
+    </div>
+  </div>
+{% endblock %}

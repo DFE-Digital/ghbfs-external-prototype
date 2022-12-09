@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    {% include "includes/_faf-inset-top.html" %}
+
+    <form action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">What level of support are you looking for?</h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-nhh-support" name="support-required" type="radio" value="General helpdesk~support" aria-describedby="General helpdesk-tree-nhh-support-item-hint">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-nhh-support">General helpdesk</label>   
+              <div id="decision-tree-nhh-support-item-hint" class="govuk-hint govuk-radios__hint">
+                For schools and MATs with knowledge or experience of procurement (only need minimal guidance).
+              </div> 
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-nhh-support-2" name="support-required" type="radio" value="Schools focused~specific" aria-describedby="Schools focused-nhh-support-2-item-hint">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-nhh-support-2">Schools focused</label>
+              <div id="decision-tree-nhh-support-2-item-hint" class="govuk-hint govuk-radios__hint">
+                Varying levels of support for schools and MATs with any level of knowledge or experience of procurement (including detailed end-to-end support).
+              </div>   
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+    
+    {% include "../../../includes/_previous-answers.html" %}
+
+  </div>
+</div>
+{% endblock %}

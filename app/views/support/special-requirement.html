@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+{% set title = "Do you have any special requirements when you communicate or use technology and/or online services?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/how-confident"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        <span class="govuk-caption-l">Special requirements</span>
+
+        {% set hint %}
+          <p>We will be contacting you by email or video call. Tell us about any adjustments we can make, so that we can help and interact with you in the best way possible.</p>
+        {% endset %}
+
+        {% set conditional %}
+          {{ govukTextarea({
+            name: "special-requirements",
+            id: "special-requirements",
+            label: {
+              text: "What are your requirements?",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: hint
+          },
+          items: [       
+          {
+              text: "Yes",
+              conditional: {
+                html: conditional
+              }
+            },
+            {
+              text: "No"
+            }
+          ]
+        }) }}
+  
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

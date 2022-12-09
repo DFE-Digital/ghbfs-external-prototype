@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+{% set title = "Request help and support for your procurement" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-xl">{{title}}</h1>
+
+        {% set html %}
+          <p class="govuk-notification-banner__heading">
+            <a class="govuk-notification-banner__link" href="../find-a-framework-v2/energy-guidance">What you can do about rising energy prices</a>
+          </p>
+          <p class="govuk-notification-content">Last updated 29 September 2022</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          titleText: "Information and advice"
+        }) }}
+
+        <p>Use this service if you're a state funded school in England.</p>
+     
+        <p class="govuk-body">We can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>give you general guidance or specific advice on buying goods or services for your school</li>
+          <li>give you support with buying goods or services for your school using a framework agreement</li>
+          <li>buy on your behalf through a framework agreement</li>
+          <li>buy on your behalf by getting quotes or bids for contract renewals or new procurements from an open supplier market</li>
+          <li>help you buy energy - we'll ask you to upload your recent energy bill to give us the information we need to support you</li>
+        </ul>
+        <p>The Get help buying for schools team will respond to you within 2 working days.</p>
+        
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>read <a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools/find-the-right-way-to-buy">about frameworks</a></li>
+          <li>find out more about <a href="../gov/buying-for-schools">planning for what you’re buying</a></li>
+          <li>read information on <a href="../gov/buying-procedures-for-schools">finding the right way to buy</a> for your school.</li>
+          <li><a href="https://get-help-buying-for-schools.education.gov.uk/">create a specification</a> if you don't have one yet</li>
+        </ul>
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4",
+          text: "Start now",
+          isStartButton: true
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

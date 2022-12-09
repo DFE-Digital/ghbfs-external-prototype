@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Benefits of using a framework</h1>
+
+        <div class="nhsuk-action-link" style="margin-bottom: 30px;">
+          <a class="nhsuk-action-link__link"  style="font-weight: 600; padding-left: 38px; position: relative; text-decoration: none; color: #005eb8; font-size: 1.375rem; line-height: 1.45455;" href="">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" style="fill: #007f3b; height: 36px; left: -3px; position: absolute; top: -4px; width: 36px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Get help buying for schools</span>
+          </a>
+        </div>
+
+        <p class="govuk-body">You can use frameworks without having to run a full buying process.</p>
+
+        <p class="govuk-body">Each framework agreement has:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>details of products, services and suppliers available</li>
+          <li>an agreed pricing structure and terms and conditions</li>
+          <li>guidance on how to buy</li>
+        </ul>
+
+        <p class="govuk-body">Buying from a framework can be quicker and easier than getting bids or quotes because the agreements:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have already been through a full competitive tender process</li>
+          <li>have been quality checked</li>
+          <li>are checked to make sure they comply with the law</li>
+          <li>may have draft specifications and help available</li>
+        </ul>
+
+        <a href="selection" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Continue
+        </a>
+        <p>
+    </div>
+  </div>
+{% endblock %}
+

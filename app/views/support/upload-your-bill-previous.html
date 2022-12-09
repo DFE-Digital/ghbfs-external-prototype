@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page
+{% endblock %}
+
+
+{% block header %}
+  {% if data['signin'] == "dsi" %}
+    {% include "includes/logged-in-user.html" %}
+  {% else %}
+    {% include "includes/no-log-in-user.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+.upload-container {
+}
+
+.upload-container .upload-item {
+  //background-color: pink;
+  padding:16px;
+  margin: 16px 0;
+  border: 1px solid #b1b4b6;
+}
+
+.upload-container .upload-item.upload-item--error {
+  border: 2px solid #d4351c;
+  padding-bottom:32px; 
+}
+
+
+
+
+.upload-container .upload-item.upload-item--error p {
+  color: #d4351c;
+  font-weight:bold;
+}
+
+.upload-container .upload-item .upload-row  {
+  clear:both;
+  //margin-bottom:16px;
+}
+
+.upload-container .upload-item p {
+  float: left;
+  margin-bottom: 12px;
+}
+
+.upload-container .upload-item h3 {
+  float: left;
+  margin-bottom: 8px;
+}
+
+.upload-container .upload-item a {
+  float: right;
+}
+
+
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">About your request</span>
+      <h1 class="govuk-heading-l">Upload your energy information</h1>
+      <p>Please upload your most recent energy bill. You can upload multiple bills if you have more than one meter. You can also upload your energy information in another format, like a spreadsheet.</p>
+
+        <form action="uploading-your-bill" method="post">
+          {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+          <div class="moj-multi-file-upload">
+
+
+            <div class="moj-multi-file-upload__upload">
+            
+              <div class="govuk-form-group">
+                <!--<label class="govuk-label govuk-label--m" for="documents">
+                  Upload a file
+                </label>-->
+
+                <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+              </div>
+
+              <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                Upload file
+              </button>
+
+              <div class="moj-multi-file__uploaded-files ">
+                <h2 class="govuk-heading-m">Files added</h2>
+                <div class="govuk-summary-list moj-multi-file-upload__list"></div>
+              </div>
+
+
+                <h2 class="govuk-heading-m">Files already uploaded</h2>
+
+
+
+              <div class="upload-container">
+                
+                <div class="upload-item">
+                  <div class="upload-row govuk-!-margin-bottom-4">
+                    <h3 class="govuk-heading-s">File12345.png (2MB)</h3>
+                  </div>
+                </div>
+
+                <div class="upload-item">
+                  <div class="upload-row govuk-!-margin-bottom-4">
+                    <h3 class="govuk-heading-s">File12345.png (2MB)</h3>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          
+
+          {{ govukButton({
+            text: "Continue to upload"
+          }) }}
+          <p><a href="enter-problem-description">I need to provide my energy information another way</a></p>
+        </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/multi-file-upload.js"></script>
+<script>
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: '/ajax-upload-url',
+    deleteUrl: '/ajax-delete-url'
+  });
+}
+</script>
+{% endblock %}

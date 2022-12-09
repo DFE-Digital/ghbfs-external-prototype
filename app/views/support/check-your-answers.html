@@ -1,0 +1,168 @@
+{% extends "layouts/main.html" %}
+{% set title = "Send your request" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/how-confident"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+      {#<form action="confirmation?returnUrl=faf" method="post">#}
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Your name"
+              },
+              value: {
+                text: (data['firstname'] or 'Test') + " " + (data['lastname'] or 'User')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "enter-name",
+                    text: '' if (data['signin'] == 'dsi') else 'Change',
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Your email address"
+              },
+              value: {
+                text: data['email-address'] or 'admin@school.com'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "enter-email-address",
+                    text: '' if (data['signin'] == 'dsi') else 'Change',
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Your school"
+              },
+              value: {
+                text: data['establishment-name'] or 'Queensbridge High School'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-school" if (data['signin'] == 'dsi') else "school-search",
+                    text: 'Change',
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "School type"
+              },
+              value: {
+                text: data['establishment-name'] or 'Single'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-school" if (data['signin'] == 'dsi') else "school-search",
+                    text: 'Change',
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Description of request"
+              },
+              value: {
+                text: "My request is about energy" if data['energy'] == 'yes' else data['query'] or "My request is about buying catering"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "enter-problem-description",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text:  "Bills attached" if data['energy'] == 'yes' else "Procurement amount"
+              },
+              value: {
+                text: "2" if data['energy'] == 'yes' else data['query'] or '£100000'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-much",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Confidence level"
+              },
+              value: {
+                text: data['confidence'] or 'Very confident'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-confident",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Special requirements"
+              },
+              value: {
+                text: data['query'] or 'No special requirements needed'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "special-requirement",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <p>Once you send this request, we will review it and get in touch within 2 working days.</p>
+
+        {{ govukButton({
+          text: "Send request"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

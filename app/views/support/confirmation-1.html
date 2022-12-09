@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page
+{% endblock %}
+
+{% block header %}
+  {% if data['signin'] == "dsi" %}
+    {% include "includes/logged-in-user.html" %}
+  {% else %}
+    {% include "includes/no-log-in-user.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="../specify/dashboard" method="post">        
+        {{ govukPanel({
+          titleText: "Your request has been sent",
+          html: "We have sent a confirmation email to: admin@school.com"
+        }) }}
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p>The Get help buying for schools team will now review your energy bills. We'll be in touch within 2 working days to find a convenient time to discuss your options.</p>     
+        <p>Please check to make sure you receive the email confirmation within the next 10 minutes. Check your junk folder if you do not see it.</p>
+        <p>You'll need to submit your request again if you do not receive an email from us because this is how we'll be contacting you.</p> 
+        <h2 class="govuk-heading-m">What you can do next</h2>
+        <p>You can read our guidance about <a href="">buying energy for your school</a>. It includes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>whether you can get a reduced rate VAT</li>
+          <li>how to choose between fixed, flexible or variable price contracts</li>
+          <li>what to think about when choosing contract length</li>
+        </ul>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

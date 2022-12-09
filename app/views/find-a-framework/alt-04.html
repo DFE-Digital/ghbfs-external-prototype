@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Benefits of using a framework</h1>
+
+        <div class="hods-alert" style="border-left: 10px solid #b1b4b6; border-color: #2b8cc4; background-color: #dbeff9; padding: 15px; margin-bottom: 30px">
+          <h2 class="govuk-heading-m">Get help buying for schools</h2>
+          <span class="govuk-body">
+            The DfE <a href=''>Get help buying for schools</a> will help you prepare and research before buying to help you get the best deal and save money.
+          </span>
+        </div>
+
+        <p class="govuk-body">You can use frameworks without having to run a full buying process.</p>
+
+        <p class="govuk-body">Each framework agreement has:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>details of products, services and suppliers available</li>
+          <li>an agreed pricing structure and terms and conditions</li>
+          <li>guidance on how to buy</li>
+        </ul>
+
+        <p class="govuk-body">Buying from a framework can be quicker and easier than getting bids or quotes because the agreements:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have already been through a full competitive tender process</li>
+          <li>have been quality checked</li>
+          <li>are checked to make sure they comply with the law</li>
+          <li>may have draft specifications and help available</li>
+        </ul>
+
+        <a href="selection" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Continue
+        </a>
+        <p>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+{% set title = "Department for Education Sign-in" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/choose-signin"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        <h1 class="govuk-heading-xl">{{title}}</h1>
+        <p>DfE Sign-in is your gateway to several important services in the education sector.</p>
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="email-address">
+            Email address
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="email-address" name="email-address" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="password">
+            Password
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password">
+          <p><a class="govuk-link govuk-link--no-visited-state" href="#">Forgotten your password?</a></p>
+        </div>
+
+        <div class="govuk-inset-text">
+          <p>By signing in you accept our <a class="govuk-link govuk-!-font-weight-bold" href="/terms">terms and conditions</a>.</p>
+        </div>
+      
+        {{ govukButton({
+          text: "Sign in"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

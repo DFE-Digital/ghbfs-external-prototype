@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page
+{% endblock %}
+
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">About your request</span>
+
+        <form action="" method="post">
+
+          {% set hintText %}
+            <p>By uploading your energy information, we'll be able to deal with your request quicker. If you don't have them, we'll need to know:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>your current energy provider</li>
+              <li>when your current contract ends</li>
+              <li>how much energy you use</li>
+              <li>what tariff you are on</li>
+              <li>how many meters you have</li>
+            </ul>
+          {% endset %}
+
+          {{ govukRadios({
+            name: "bill",
+            fieldset: {
+              legend: {
+                text: "Would you like to provide us with your energy information in another way?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              html: hintText
+            },
+            items: [
+              {
+                value: "yes~choose-signin",
+                text: "I can upload my energy information in a different format, such as in a document or a spreadsheet"
+              },
+              {
+                value: "no~choose-signin",
+                text: "I want to email my bills at a later date",
+                hint: {
+                  text: "We will email you instructions on how to do this"
+                }
+              },
+              {
+                value: "no~choose-signin",
+                text: "I've never had an energy bill before"
+              },
+              {
+                value: "no~choose-signin",
+                text: "No thank you"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+    </div>
+  </div>
+{% endblock %}

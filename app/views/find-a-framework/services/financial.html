@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% include "includes/_faf-inset-top.html" %}
+      
+    <form action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">What services are you looking for in financial?</h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-financial-services" name="sub-category" type="radio" value="Audit~financial/audit">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-financial-services">Audit</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-financial-services-3" name="sub-category" type="radio" value="Insurance~financial/insurance">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-financial-services-3">Insurance</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="decision-tree-financial-services-4" name="sub-category" type="radio" value="Leasing~financial/leasing">
+              <label class="govuk-label govuk-radios__label" for="decision-tree-financial-services-4">Leasing</label>  
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+    
+    {% include "../../includes/_previous-answers.html" %}
+
+  </div>
+</div>
+{% endblock %}

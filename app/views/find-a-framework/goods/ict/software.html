@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% include "includes/_faf-inset-top.html" %}
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3">Matching frameworks</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, there are multiple approved frameworks to choose from.</p>
+    
+    <dl class="card">
+      <a href="/find/type/buying/what/ict/ict-categories/software/software-licenses"></a>
+      <div class="card__header">
+        <dt class="govuk-visually-hidden">Framework name:</dt>
+        <dd class="card__title">Software licenses and associated services for academies and schools</dd>
+      </div>
+      <div class="card__content">
+        <dt>Provider:</dt>
+        <dd>CPC</dd>
+      </div>
+    </dl>
+  
+    <dl class="card">
+      <a href="/find/type/buying/what/ict/ict-categories/software/ict-procurement"></a>
+      <div class="card__header">
+        <dt class="govuk-visually-hidden">Framework name:</dt>
+        <dd class="card__title">ICT procurement</dd>
+      </div>
+      <div class="card__content">
+        <dt>Provider:</dt>
+        <dd>Everything ICT</dd>
+      </div>
+    </dl>
+  
+    <dl class="card">
+      <a href="/find/type/buying/what/ict/ict-categories/software/edtech"></a>
+      <div class="card__header">
+        <dt class="govuk-visually-hidden">Framework name:</dt>
+        <dd class="card__title">Education technology</dd>
+      </div>
+      <div class="card__content">
+        <dt>Provider:</dt>
+        <dd>CCS</dd>
+      </div>
+    </dl>
+    
+    {% include "../../../includes/_do-you-need-help-checkbox.html" %}
+  
+    {% include "../../../includes/_previous-answers.html" %}
+    
+  </div>
+</div>
+{% endblock %}

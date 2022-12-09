@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Create a new specification
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is not a real service.'
+}) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: " ../create-specification"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="../create-specification" method="POST">
+        {% set missionHtml %}
+        {{ govukTextarea({
+          name: "mission-statement-text",
+          id: "more-detail",
+          label: {
+            text: "What is your school's mission statement?",
+            isPageHeading: true
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "mission-statement",
+          name: "mission-statement",
+          fieldset: {
+            legend: {
+              text: "Does your school have a mission statement?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Suppliers will use this to assess how well they are aligned to the school's vision for a healthy partnership."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: missionHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>      
+    </div>
+  </div>
+{% endblock %}

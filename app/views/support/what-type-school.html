@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Create a new specification
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
+}) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: " ../create-specification"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <form action="name-your-specification" method="POST">
+        {{ govukRadios({
+          idPrefix: "category-type",
+          name: "category-type",
+          fieldset: {
+            legend: {
+              text: "What type of organisation are you buying for?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          }
+        }) }}
+        <p>If you're buying together informally as a group, choose a 'single school' to represent the group.</p>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios">
+              {% if data.signin == "dsi" %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="A single school~check-details">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    A single school
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    such as a local authority maintained school or an academy in a single or multi-academy trust
+                    </div>
+                </div>
+              {% else  %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="A single school~school-search">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    A single school
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    such as a local authority maintained school or an academy in a single or multi-academy trust
+                    </div>
+                </div>
+              {% endif %}
+
+              {% if data.signin == "dsi" %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="A group or trust~choose-school">
+                    <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                      An academy trust or federation
+                    </label>
+                </div>
+              {% else  %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="A group or trust~group-trust-search">
+                    <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                      An academy trust or federation
+                    </label><br>
+                </div>
+              {% endif %}
+            </div>
+            </fieldset>
+            </div>
+        <br><br>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

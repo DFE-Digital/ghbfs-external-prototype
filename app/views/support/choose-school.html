@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+{% set title = "Which school are you buying for?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/sign-in"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+      <span class="govuk-caption-l">About your school</span>
+        
+       {#
+        {% if data['bill'] == "yes" %}
+          <form action="upload-your-bill" method="post">
+        {% else %}
+          <form action="enter-problem-description" method="post">
+        {% endif %}
+#}
+
+      {{ govukRadios({
+        idPrefix: "establishment-name",
+        name: "establishment-name",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "You are linked to more than one school. Select the one that's related to your request."
+        }, 
+        items: [       
+        {
+            value: "Hope Primary School",
+            text: "Hope Primary School"
+          },
+          {
+            value: "Wellington Primary School (MAT)",
+            text: "Wellington Primary School (MAT)"
+          },
+          {
+            value: "Susan Lawrence Junior School",
+            text: "Susan Lawrence Junior School"
+          }
+              ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

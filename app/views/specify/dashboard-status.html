@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Dashboard
+{% endblock %}
+
+{% block header %}
+  {% include "includes/logged-in-user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a href="../feedback/give-feedback">feedback</a> will help us to improve it (opens in new tab)'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Dashboard",
+        href: "../specify/dashboard"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+    <!--html: '<a href="../feedback/give-feedback">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'-->
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      
+        <h1 class="govuk-heading-xl">Specifications dashboard</h1>
+        <div class="govuk-inset-text">
+          <a href="../support/start">Request free help and support with your specification</a>
+        </div>
+        <p>Create a new specification for a procurement</p>
+        <p><a href="what-are-you-buying?isEdited=false" class="govuk-button">Create a new specification</a></p>
+        <h2 class="govuk-heading-m">Existing specifications</h2>
+        
+        {{ govukTable({
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Name"
+            },
+            {
+              text: "Category"
+            },
+            {
+              text: "Status"
+            },
+            {
+              text: "Date started"
+            },            
+            {
+              text: ""
+            }
+          ],
+          rows: [
+            
+            [
+              {
+                html: "<a href='view-specification'>Oxford primary spec 234567890</a>"
+              },
+              {
+                text: "MFD"
+              },
+              {
+                text: "In progress"
+              },
+              {
+                text: "2 Oct 2020"
+              },
+              {
+                format: "govuk-table__cell--numeric",
+                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 234567890'>edit</a> - <a href='delete'>delete</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href=''>Oxford high school spec 345678901</a>"
+              },
+              {
+                text: "Catering"
+              },
+              {
+                text: "In progress"
+              },
+              {
+                text: "10 Sept 2020"
+              },
+              {
+                format: "govuk-table__cell--numeric",
+                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 345678901'>edit</a> - <a href='delete'>delete</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='view-specification-completed'>Oxford high school spec 456789012</a>"
+              },
+              {
+                text: "MFD"
+              },
+              {
+                text: "Finished"
+              },
+              {
+                text: "9 Sept 2020"
+              },
+              {
+                format: "govuk-table__cell--numeric",
+                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 456789012'>edit</a> - <a href='delete'>delete</a>"
+              }
+            ]
+          ]
+        }) }}
+    </div>
+  </div>
+{% endblock %}

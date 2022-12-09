@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/_faf-inset-top.html" %}
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Schools leasing framework</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Econocom framework.</p> 
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>choice of own supplier and relevant equipment and costs passed on to Econocom to manage for a single leasing agreement</li>
+        <li>separating equipment supply from the operating lease price means transparency of cost and a clear route to value for money</li>
+      </ul>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>schools can choose the supplier and agree the price and specification </li>
+        <li>transparency of cost and value for money</li>
+        <li>each separate purchase can be managed into one single lease agreement for the school with Econocom </li>
+      </ul>
+
+      <p class="govuk-body">All frameworks also offer:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>compliance with the relevant procurement regulations</li>
+        <li>suppliers pre-checked by the approved framework provider</li>
+        <li>pre-agreed terms and conditions</li>
+      </ul>
+
+      <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.econocom.co.uk/our-sectors/education/schools-leasing-framework",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+  </div>
+</div>
+
+{% endblock %}

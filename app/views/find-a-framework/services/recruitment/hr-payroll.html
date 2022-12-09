@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/_faf-inset-top.html" %}
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Outsourced human resources including payroll services</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Crescent Purchasing Consortium (CPC) framework.</p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>human resource (HR) services including specialist recruitment or e-recruitment, human resource consultancy (employee relations), managed services, human resource transactional services (employee resourcing), training, business and administration support services, transformational services, leadership or management, support services and employee support services</li>
+        <li>comprehensive suite of payroll services which are available as a bureau, part-managed or managed service</li>
+        <li>human resource and payroll as an integrated service</li>
+      </ul>
+      <p>The services available are not limited to those listed. Suppliers can make their wider portfolio of human resource and payroll services available to you.</p>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>easy to use</li>
+        <li>offers a complete package for schools wanting to outsource HR and/or payroll</li>
+      </ul>
+    </div>
+
+    <p class="govuk-body">All frameworks also offer:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>compliance with The Official Journal of the European Union (OJEU) principles and regulations</li>
+      <li>a list of checked suppliers</li>
+      <li>pre-agreed terms and conditions</li>
+    </ul>
+
+    <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.thecpc.ac.uk/suppliers/categories/framework.php?categoryID=9&amp;frameworkID=229",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../includes/_previous-answers.html" %}
+    
+  </div>
+</div>
+{% endblock %}
