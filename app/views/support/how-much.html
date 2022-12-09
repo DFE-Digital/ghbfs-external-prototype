@@ -1,79 +1,48 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Do you know how much the school will be spending on this procurement?
-{% endblock %}
-
-{% block header %}
-  {% if data['signin'] == "dsi" %}
-    {% include "includes/logged-in-user.html" %}
-  {% else %}
-    {% include "includes/no-log-in-user.html" %}
-  {% endif %}
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Approximately how much will the school be spending on this procurement in total?" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is not a real service.'
-}) }}
-
-{% if data['specification'] == null or data['specification'] == '' %}
-  {% set backURL = 'what-are-you-buying' %}
-{% else %}
-  {% set backURL = 'choose-specification' %}
-{% endif %}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/energy-request-about"
+  }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
 
-      <span class="govuk-caption-l">About your procurement</span>
+        <span class="govuk-caption-l">About your procurement</span>
 
-      <form action="bought-before" method="post">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Approximately how much will the school be spending on this procurement in total?
-            </h1>
-          </legend>
-          <div id="email-hint" class="govuk-hint">This is the approximate amount you will be spending over the lifetime of the contract. Use the value of a previous or existing contract if you're unsure.</div>
-          <div id="email-hint" class="govuk-hint">We only use this as a guide to understand the procurement better. We know it can change.</div>
-      <!-- <div id="contact-hint" class="govuk-hint">
-        Select one option.
-      </div> -->
+        {% set html %}
+          <p>This is the approximate amount you will be spending over the lifetime of the contract. Use the value of a previous or existing contract if you're unsure.</p>
+          <p>We only use this as a guide to understand the procurement better. We know it can change.</p>
+        {% endset %}
 
-      <!-- <div id="email-hint" class="govuk-hint">
-        This will help us to make sure you're buying compliantly for the amount you intend to spend.
-      </div> -->
+        {{ govukInput({
+          label: {
+            text: title,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            html: html
+          },
+          classes: "govuk-input--width-5",
+          id: "value",
+          name: "value",
+          prefix: {
+            text: "£"
+          },
+          spellcheck: false
+        }) }}
+  
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-      <div class="govuk-form-group">
-            <div class="govuk-input__wrapper">
-              <div class="govuk-input__prefix" aria-hidden="true">£</div>
-              <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
-            </div>
-            <!-- <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"> -->
-          </div>
-
-    </fieldset>
+      </form>
+    </div>
   </div>
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-
-  <p><a href="">Cancel</a></p>
-
-</form>
-  </div>
-</div>
 {% endblock %}

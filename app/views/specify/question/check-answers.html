@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %}
+{% set title = "Check and confirm your answers" %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/specify/question/01-school-mission-statement"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      {% include '../question/_summary-card.html' %}
+
+      <form method="post">
+        {% set completedRadiosName = '[specification][mission][section-completed]' %}
+        {% set completedRadiosValue = data.specification['mission']['section-completed'] %}
+        {% include '../../shared/_have-you-completed-section.html' %}
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,31 +1,18 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Start page
-{% endblock %}
-
+{% extends "layouts/main.html" %}
+{% set title = "Would you like to provide us with your energy information in another way?" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is not a real service.'
-}) }}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/energy-bill"
+  }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">About your request</span>
-
-        <form action="" method="post">
-
+      <form action="" method="post">
+        <span class="govuk-caption-l">About your request</span>
           {% set hintText %}
             <p>By uploading your energy information, we'll be able to deal with your request quicker. If you don't have them, we'll need to know:</p>
             <ul class="govuk-list govuk-list--bullet">
@@ -38,10 +25,10 @@
           {% endset %}
 
           {{ govukRadios({
-            name: "bill",
+            name: "have-energy-bill",
             fieldset: {
               legend: {
-                text: "Would you like to provide us with your energy information in another way?",
+                text: title,
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -51,22 +38,22 @@
             },
             items: [
               {
-                value: "yes~choose-signin",
+                value: "yes",
                 text: "I can upload my energy information in a different format, such as in a document or a spreadsheet"
               },
               {
-                value: "no~choose-signin",
+                value: "no",
                 text: "I want to email my bills at a later date",
                 hint: {
                   text: "We will email you instructions on how to do this"
                 }
               },
               {
-                value: "no~choose-signin",
+                value: "no",
                 text: "I've never had an energy bill before"
               },
               {
-                value: "no~choose-signin",
+                value: "no",
                 text: "No thank you"
               }
             ]

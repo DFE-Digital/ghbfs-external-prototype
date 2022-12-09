@@ -1,0 +1,20 @@
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Add your school's mission statement",
+  rows: [
+    {
+      key: {
+        html: "What is your school's mission statement?"
+      },
+      value: {
+        html: data['mission-statement'] | nl2br
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/specify/question/01-school-mission-statement/"
+        }]
+      }
+    }
+  ]
+}) }}

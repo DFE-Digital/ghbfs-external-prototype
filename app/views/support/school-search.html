@@ -1,5 +1,12 @@
-{% extends "layout.html" %}
+{% extends "layouts/main.html" %}
+{% set title = "Is your request about energy?" %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/start"
+  }) }}
+{% endblock %}
 
 {% block pageScripts %}
   <link href="/public/stylesheets/accessible-autocomplete.min.css" media="all" rel="stylesheet" type="text/css" />
@@ -73,30 +80,12 @@
   </script>
 {% endblock %}
 
-{% block pageTitle %}
-  Start page
-{% endblock %}
-
-{% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is not a real service.'
-}) }}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-{% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form method="post">
       <span class="govuk-caption-l">About your school</span>
 
-      <form action="check-school" method="post">
 
         <div class="govuk-form-group">
           <label for="my-autocomplete" class="govuk-label govuk-label--l">Search for your school</label>

@@ -1,38 +1,19 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Dashboard
-{% endblock %}
-
-{% block header %}
-  {% include "includes/logged-in-user.html" %}
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Specifications dashboard" %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is a new service – your <a href="../feedback/give-feedback">feedback</a> will help us to improve it (opens in new tab)'
-  }) }}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Dashboard",
-        href: "../specify/dashboard"
-      }
-    ]
+  {{ govukBackLink({
+    text: "Back",
+    href: "/specify/sign-in"
   }) }}
 {% endblock %}
-
-    <!--html: '<a href="../feedback/give-feedback">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'-->
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
+      <form method="post">
       
-        <h1 class="govuk-heading-xl">Specifications dashboard</h1>
+        <h1 class="govuk-heading-xl">{{title}}</h1>
         <div class="govuk-inset-text">
           <a href="../support/start">Request free help and support with your specification</a>
         </div>
@@ -43,65 +24,29 @@
         {{ govukTable({
           firstCellIsHeader: false,
           head: [
-            {
-              text: "Name"
-            },
-            {
-              text: "Category"
-            },
-            {
-              text: "Date started"
-            },
-            {
-              text: ""
-            }
+            { text: "Name" },
+            { text: "Category" },
+            { text: "Date started" },
+            { text: "" }
           ],
           rows: [
-            
             [
-              {
-                html: "<a href='view-specification'>Oxford primary spec 234567890</a>"
-              },
-              {
-                text: "MFD"
-              },
-              {
-                text: "2 Oct 2020"
-              },
-              {
-                format: "govuk-table__cell--numeric",
-                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 234567890'>edit</a> - <a href='delete'>delete</a>"
-              }
+              { html: "<a href='view-specification'>Oxford primary spec 234567890</a>"},
+              { text: "MFD" },
+              { text: "2 Oct 2020" },
+              { format: "govuk-table__cell--numeric", html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 234567890'>edit</a> - <a href='delete'>delete</a>" }
             ],
             [
-              {
-                html: "<a href=''>Oxford high school spec 345678901</a>"
-              },
-              {
-                text: "Catering"
-              },
-              {
-                text: "10 Sept 2020"
-              },
-              {
-                format: "govuk-table__cell--numeric",
-                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 345678901'>edit</a> - <a href='delete'>delete</a>"
-              }
+              { html: "<a href=''>Oxford high school spec 345678901</a>" },
+              { text: "Catering" },
+              { text: "10 Sept 2020" },
+              { format: "govuk-table__cell--numeric", html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 345678901'>edit</a> - <a href='delete'>delete</a>" }
             ],
             [
-              {
-                html: "<a href='view-specification-completed'>Oxford high school spec 456789012</a>"
-              },
-              {
-                text: "MFD"
-              },
-              {
-                text: "9 Sept 2020"
-              },
-              {
-                format: "govuk-table__cell--numeric",
-                html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 456789012'>edit</a> - <a href='delete'>delete</a>"
-              }
+              { html: "<a href='view-specification-completed'>Oxford high school spec 456789012</a>" },
+              { text: "MFD" },
+              { text: "9 Sept 2020" },
+              { format: "govuk-table__cell--numeric", html: "<a href='create-specification?isEdited=true&specification-name=Oxford primary spec 456789012'>edit</a> - <a href='delete'>delete</a>" }
             ]
           ]
         }) }}

@@ -11,7 +11,6 @@ module.exports = router => {
     if(req.session.data['energy-request'] == 'yes') {
       res.redirect('/support/energy-request-about')
     } else {
-      //req.session.data['bill'] = "no"
       res.redirect('/support/choose-signin')
     }
   })
@@ -20,7 +19,6 @@ module.exports = router => {
     if(req.session.data['energy-request'] == 'yes') {
       res.redirect('/support/energy-bill')
     } else {
-      //req.session.data['bill'] = "no"
       res.redirect('/support/choose-signin')
     }
   })
@@ -45,6 +43,26 @@ module.exports = router => {
     res.redirect('/support/check-details')
   })
 
+  router.post('/support/what-type-school', (req, res) => {
+    if(req.session.data['type-organisation'] == 'single') {
+      res.redirect('/support/check-details')
+    } else {
+      res.redirect('/support/school-search')
+    }
+  })
+
+  router.post('/support/school-search', (req, res) => {
+    res.redirect('/support/check-school')
+  })
+
+  router.post('/support/check-school', (req, res) => {
+    if(req.session.data['correct-school'] == 'yes') {
+      res.redirect('/support/check-details')
+    } else {
+      res.redirect('/support/school-search')
+    }
+  })
+
   router.post('/support/check-details', (req, res) => {
     res.redirect('/support/choose-school')
   })
@@ -61,6 +79,10 @@ module.exports = router => {
     res.redirect('/support/uploading-your-bill')
   })
 
+  router.post('/support/energy-another-way', (req, res) => {
+    res.redirect('/support/choose-signin')    
+  })
+
   router.post('/support/bills-uploaded', (req, res) => {
     res.redirect('/support/enter-problem-description')
   })
@@ -71,6 +93,10 @@ module.exports = router => {
     } else {
       res.redirect('/support/how-much')
     }
+  })
+
+  router.post('/support/how-much', (req, res) => {
+    res.redirect('/support/bought-before')
   })
 
   router.post('/support/bought-before', (req, res) => {

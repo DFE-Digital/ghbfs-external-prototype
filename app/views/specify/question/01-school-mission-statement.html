@@ -1,40 +1,29 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Create a new specification
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "What are you buying?" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is not a real service.'
-}) }}
   {{ govukBackLink({
     text: "Back",
-    href: " ../create-specification"
+    href: "/specify/create-specification"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="../create-specification" method="POST">
+      <form method="post">
         {% set missionHtml %}
-        {{ govukTextarea({
-          name: "mission-statement-text",
-          id: "more-detail",
-          label: {
-            text: "What is your school's mission statement?",
-            isPageHeading: true
-          }
-        }) }}
+          {{ govukTextarea({
+            name: "mission-statement",
+            id: "mission-statement",
+            label: {
+              text: "What is your school's mission statement?",
+              isPageHeading: true
+            }
+          }) }}
         {% endset -%}
 
         {{ govukRadios({
-          idPrefix: "mission-statement",
-          name: "mission-statement",
           fieldset: {
             legend: {
               text: "Does your school have a mission statement?",
@@ -47,21 +36,21 @@
           },
           items: [
             {
-              value: "Yes",
+              value: "completed",
               text: "Yes",
               conditional: {
                 html: missionHtml
               }
             },
             {
-              value: "No",
+              value: "completed",
               text: "No"
             }
           ]
         }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
       </form>      
     </div>

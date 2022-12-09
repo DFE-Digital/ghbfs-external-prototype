@@ -1,32 +1,23 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Create a new specification
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "What are you buying?" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
-}) }}
   {{ govukBackLink({
     text: "Back",
-    href: " ../create-specification"
+    href: "/specify/dashboard"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form action="name-your-specification" method="POST">
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post">
         {{ govukRadios({
           idPrefix: "category-type",
           name: "category-type",
           fieldset: {
             legend: {
-              text: "What are you buying?",
+              text: title,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
