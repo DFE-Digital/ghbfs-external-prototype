@@ -1,41 +1,28 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Create a new specification
-{% endblock %}
-
-{% block header %}
-  {% include "includes/logged-in-user.html" %}
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Specifications dashboard" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
-}) }}
-
   {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Dashboard",
-        href: "dashboard"
-      },
-      {
-        text: "Create a specification",
-        href: "create-specification"
-      },
-      {
-        text: "View specification"
-      }
+  items: [
+        {
+          text: "Dashboard",
+          href: "dashboard"
+        },
+        {
+          text: "Create a specification",
+          href: "create-specification"
+        },
+        {
+          text: "View specification"
+        }
     ]
-  }) }}
+}) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
+      <form method="post">
       <h1 class="govuk-heading-xl">Your specification</h1>
       <h2 class="govuk-caption-l">You are viewing: {{ data['specification-name'] or 'New Specification 1234' }}</h2>
         <br>

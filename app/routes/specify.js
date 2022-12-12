@@ -29,13 +29,21 @@ module.exports = router => {
   router.post('/specify/question/check-answers/', (req, res) => {
     res.redirect('/specify/create-specification')
   })
-/*
-  router.post('/report/your-organisation/address', (req, res) => {
-    res.redirect('/report/your-organisation/check-answers')
+
+  router.post('/specify/view-specification-summary/', (req, res) => {
+    res.redirect('/specify/download')
   })
 
-  router.post('/report/your-organisation/check-answers', (req, res) => {
-    res.redirect('/report')
+  router.post('/specify/download/', (req, res) => {
+    res.redirect('/specify/next-steps')
   })
-*/
+
+  router.post('/specify/delete/', (req, res) => {
+    res.redirect('/specify/delete-confirmation')
+  })
+
+  router.post('/specify/delete-confirmation/', (req, res) => {
+    res.redirect('/specify/dashboard')
+  })
+
 }

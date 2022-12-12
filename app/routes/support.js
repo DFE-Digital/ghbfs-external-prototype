@@ -104,11 +104,11 @@ module.exports = router => {
   })
 
   router.post('/support/framework-before', (req, res) => {
-    if(req.session.data['used-framework-before'] == 'yes') {
-      res.redirect('/support/how-confident')
-    } else {
+    //if(req.session.data['used-framework-before'] == 'yes') {
+    //  res.redirect('/support/how-confident')
+    //} else {
       res.redirect('/support/special-requirement')
-    }
+    //}
   })
 
   router.post('/support/how-confident', (req, res) => {

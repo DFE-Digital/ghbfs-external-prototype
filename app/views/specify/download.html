@@ -1,65 +1,53 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Create a new specification
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Would you like to mark this specification as 'finished' after you download the document?" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is a new service – your <a href="../feedback/give-feedback">feedback</a> will help us to improve it (opens in new tab)'
-}) }}
-
   {{ govukBackLink({
     text: "Back",
-    href: " ../create-specification"
+    href: "/specify/dashboard"
   }) }}
 {% endblock %}
 
 {% block content %}
- 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">        
+        {% set html %}
+          <p>You can still edit specifications that are marked as 'finished'. Marking it as being 'finished' will:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>change the status of the specification in the dashboard so that you can see which ones have been finished</li>
+            <li>remove any references to the specification being 'incomplete' in your download</li>
+          </ul>
+        {% endset %}
 
-        <h1 class="govuk-heading-l">
-          Would you like to mark this specification as 'finished' after you download the document?
-        </h1>
+        {{ govukRadios({
+          idPrefix: "energy-request",
+          name: "energy-request",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: html
+          },
+          items: [       
+          {
+              text: "Yes"
+            },
+            {
+              text: "No"
+            }
+          ]
+        }) }}
 
-      <p class="govuk-body">You can still edit specifications that are marked as 'finished'. Marking it as being 'finished' will:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>change the status of the specification in the dashboard so that you can see which ones have been finished</li>
-        <li>remove any references to the specification being 'incomplete' in your download</li>
-      </ul>
-
-        <form action="/form-handler" method="post" novalidate>
-
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="interview-needs" name="interview-needs" type="radio" value="yes">
-                  <label class="govuk-label govuk-radios__label" for="interview-needs">
-                    Yes
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="interview-needs-2" name="interview-needs" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="interview-needs-2">
-                    No
-                  </label>
-                </div>
-              </div>
-
-            </fieldset>
-          </div>
-
-          <a class="govuk-button" href="../specify/next-steps.html"> Save, and download specification</a>
-        </form>
-      </div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>      
     </div>
-  </main>
-</div>
-
+  </div>
 {% endblock %}
+

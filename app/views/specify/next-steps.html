@@ -1,35 +1,7 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Next steps
-{% endblock %}
-
-{% block header %}
-  {% include "includes/logged-in-user.html" %}
-{% endblock %}
-
-{% block pageScripts %}
-  <script src="/public/javascripts/step-by-step-nav.js"></script>
-  <script type="text/javascript">
-    var $element = $('#step-by-step-navigation')
-    var stepByStepNavigation = new GOVUK.Modules.AppStepNav()
-    stepByStepNavigation.start($element)
-  </script>
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Next steps" %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
-  }) }}
-
-  <div class="app-step-nav-header">
-    <span class="app-step-nav-header__part-of">Part of</span>
-    <a class="app-step-nav-header__title" href="../index">Buy goods or services for your school: step by step</a>
-  </div>
-
   {{ govukBreadcrumbs({
     items: [
       {
@@ -47,42 +19,21 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Next steps</h1>
-
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
       <p class="govuk-body-s">Last updated 11 January 2022</p>
-
-      <p class="govuk-body">Thank you for using this service to create a specification.</p>
-      
+      <p>Thank you for using this service to create a specification.</p>
       <p>You can now share your specification with suppliers as part of your invitation to tender (ITT).</p>
-
       <p>Consider buying from a framework recommended by DfE. This can be quicker and easier than running your own process. Each one has its own list of suppliers and has been assessed for compliance with procurement regulations, ease of use, suitability and value for money.</p>
-
       <p>Go directly to view and choose from a list of <a href="../find-a-framework/matching-frameworks">catering frameworks recommended by DfE</a> in the Find a framework tool.</p>
-     
       <p>Or <a href="../gov/find-the-right-way-to-buy">read about frameworks and how to use one</a> if you haven't used one before.</p>
-      
       <h2 class="govuk-heading-m">Other compliant procurement options</h2>
-
       <p>If you’re not able, or choose not to use a framework, make sure you follow a compliant process to continue with your procurement. Read about how to:</p>
-
       <ul class="govuk-list govuk-list--bullet">
         <li><a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools/buying-high-value-things-under-the-eu-procurement-threshold">buy high-value things <strong>under</strong> the procurement threshold</a> (over £40,000 but less than £189,330)</li>
         <li><a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools/buying-things-that-are-over-the-eu-procurement-threshold">buy things <strong>over</strong> the procurement threshold</a> (over £189,330)</li>
         <li><a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools/buying-low-to-medium-cost-things">buy low to medium cost things</a> (up to £40,000)</li>
       </ul>
-{#
-      <h2 class="govuk-heading-m">Giving us feedback</h2>
-        <p>Tell us how Get Help Buying for Schools is working for you. We use this to make improvements. It takes 3 minutes to complete.</p>
-        {{ govukButton({
-          text: "Give feedback (opens in a new tab)",
-          classes: "govuk-button--secondary"
-        }) }}
-        </p>
-#}
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-      {% include "../includes/_step-by-step-next-steps.html" %}
     </div>
   </div>
 {% endblock %}
+

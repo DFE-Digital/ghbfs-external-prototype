@@ -1,38 +1,18 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Dashboard
-{% endblock %}
-
-{% block header %}
-  {% include "includes/logged-in-user.html" %}
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "This specification has been deleted" %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
-  }) }}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Dashboard",
-        href: "dashboard"   
-      },
-      {
-        text: "Delete confirmation"
-      }
-    ]
+  {{ govukBackLink({
+    text: "Back",
+    href: "/specify/dashboard"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
-      <h1 class="govuk-heading-l">This specification has been deleted</h1>
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
       {{ govukSummaryList({
         classes: 'govuk-summary-list--no-border',
@@ -64,9 +44,10 @@
         ]
       }) }}
 
-      <a class="govuk-button" href="dashboard">Continue to dashboard</a>
-
-    
+        {{ govukButton({
+          text: "Continue to dashboard"
+        }) }}
+      </form>      
     </div>
   </div>
 {% endblock %}

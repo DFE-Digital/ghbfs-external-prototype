@@ -1,117 +1,61 @@
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Dashboard
-{% endblock %}
-
-{% block header %}
-  {% include "includes/logged-in-user.html" %}
-{% endblock %}
+{% extends "layouts/main.html" %}
+{% set title = "Are you sure you want to delete this specification?" %}
 
 {% block beforeContent %}
-{#
-  {{ govukPhaseBanner({
-        tag: { text: "beta" },
-        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  {{ govukBackLink({
+    text: "Back",
+    href: "/specify/dashboard"
   }) }}
-#}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: '<a href="../feedback/start">Get involved</a> in making the Get help buying for schools service better (opens in new tab)'
-  }) }}
-
-  {{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Dashboard",
-      href: "dashboard"   
-    },
-    {
-      text: "Delete a specification"
-    }
-  ]
-}) }}
-{#
-<mark>do we even need a backlink</mark>
-<br>
-{{ govukBackLink({
-        text: "Back to dashboard",
-        href: "dashboard"
-      }) }}
-      #}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
-      <h1 class="govuk-heading-l">Are you sure you want to delete this specification?</h1>
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      {{ govukSummaryList({
-        classes: 'govuk-summary-list--no-border',
-        rows: [
-          {
-            key: {
-              text: "Specification"
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Specification"
+              },
+              value: {
+                text: "Oxford primary spec 234567890"
+              }
             },
-            value: {
-              text: "Oxford primary spec 234567890"
-            }
-          },
-          {
-            key: {
-              text: "Category"
+            {
+              key: {
+                text: "Category"
+              },
+              value: {
+                text: "Catering"
+              }
             },
-            value: {
-              text: "Catering"
+            {
+              key: {
+                text: "Date started"
+              },
+              value: {
+                html: "21 June 2021"
+              }
             }
-          },
-          {
-            key: {
-              text: "Date started"
-            },
-            value: {
-              html: "21 June 2021"
-            }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
 
-      <p class="govuk-body">Specifications are deleted permanently and cannot be retrieved.</p>
-      <p class="govuk-body">You can <a class="govuk-link" href="">download this specification</a> before you delete it.
-     {# {{ govukRadios({
-        idPrefix: "where-do-you-live",
-        name: "where-do-you-live",
-        fieldset: {
-          legend: {
-            text: "Are you sure you want to delete specification Oxford primary spec 234567890?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        hint: {
-          text: "There is currently no way to recover a specification and this action can not be undone"
-        },
-        items: [
-          {
-            value: "Yes, I want to delete this spec",
-            text: "yes"
-          },
-          {
-            value: "No, I can't want to delete this spec",
-            text: "no"
-          }
-        ]
-      }) }}
-      #}
+        <p>Specifications are deleted permanently and cannot be retrieved.</p>
+        <p>You can <a class="govuk-link" href="">download this specification</a> before you delete it.
 
-      <div class="govuk-button-group">
-        <a class="govuk-button govuk-button--warning" href="delete-confirmation">Delete specification</a>
-        <a class="govuk-link" href="dashboard">Cancel</a>
-      </div>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Delete specification",
+            classes: "govuk-button--warning"
+          }) }}
+          <a class="govuk-link" href="dashboard">Cancel</a>
+        </div>
 
-    
+      </form>      
     </div>
   </div>
 {% endblock %}
