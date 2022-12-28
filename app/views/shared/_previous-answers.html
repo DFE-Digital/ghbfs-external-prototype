@@ -1,0 +1,279 @@
+<h2 class="govuk-heading-m govuk-!-margin-top-8">Previous answers</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "What are you buying?"
+      },
+      value: {
+        text: (data['goods-or-services'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/what-are-you-buying",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "What goods are you buying?"
+      },
+      value: {
+        text: (data['goods'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/goods",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['goods'] and data['goods-or-services'] == "goods",
+    {
+      key: {
+        text: "What services are you buying?"
+      },
+      value: {
+        text: (data['services'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['services'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What goods are you looking for in books, stationery and education supplies?"
+      },
+      value: {
+        text: (data['books-media'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/goods/books-media",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['books-media'] and data['goods-or-services'] == "goods",
+    {
+      key: {
+        text: "What are you looking for in energy efficiency?"
+      },
+      value: {
+        text: (data['energy-efficiency'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/goods/energy-efficiency",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['energy-efficiency'] and data['goods-or-services'] == "goods",
+    {
+      key: {
+        text: "What goods are you looking for in ICT?"
+      },
+      value: {
+        text: (data['ict'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/goods/ict",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['ict'] and data['goods-or-services'] == "goods",
+    {
+      key: {
+        text: "What services are you looking for in energy and utilities?"
+      },
+      value: {
+        text: (data['energy'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/energy",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['energy'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What type of meter do you have?"
+      },
+      value: {
+        text: (data['electricity'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/energy/electricity",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['electricity'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What level of support are you looking for?"
+      },
+      value: {
+        text: (data['non-half-hourly'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/energy/non-half-hourly",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['non-half-hourly'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What are you looking for in energy efficiency?"
+      },
+      value: {
+        text: (data['energy-efficiency'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/energy-efficiency",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['energy-efficiency'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in facilities management and estates?"
+      },
+      value: {
+        text: (data['facilities'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/facilities",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['facilities'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in buildings maintenance?"
+      },
+      value: {
+        text: (data['building-maintenance'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/facilities/building-maintenance",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['building-maintenance'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in buildings safety?"
+      },
+      value: {
+        text: (data['buildings-safety'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/facilities/buildings-safety",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['buildings-safety'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in financial?"
+      },
+      value: {
+        text: (data['financial'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/financial",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['financial'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in ICT?"
+      },
+      value: {
+        text: (data['ict'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/ict",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['ict'] and data['goods-or-services'] == "services",
+    {
+      key: {
+        text: "What services are you looking for in recruitment, human resources and training?"
+      },
+      value: {
+        text: (data['recruitment'] | replace("-", " ") | capitalize )
+      },
+      actions: {
+        items: [
+          {
+            href: "/faf/services/recruitment",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    } if data['recruitment'] and data['goods-or-services'] == "services"
+
+  ]
+}) }}

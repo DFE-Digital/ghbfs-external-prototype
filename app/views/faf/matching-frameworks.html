@@ -28,14 +28,8 @@
           </dl>
         {% endfor %}
 
-    {# {% include "../../../includes/_do-you-need-help-checkbox.html" %} #}
-{#
-    {{ govukButton({
-          text: "Continue"
-        }) }}
-        #}
-        {# {% include "../includes/_previous-answers.html" %} #}
-      {#</form>#}
+        {% include "shared/_previous-answers.html" %}
+
     </div>
   </div>
 {% endblock %}
