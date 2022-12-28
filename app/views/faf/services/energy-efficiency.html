@@ -1,12 +1,14 @@
 {% extends "layouts/faf.html" %}
 {% set title = "What services are you looking for in energy and utilities?" %}
 
+{#
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "/faf/energy"
   }) }}
 {% endblock %}
+#}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -44,7 +46,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-        
+
         {% include "shared/_previous-answers.html" %}
       </form>
     </div>

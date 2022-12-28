@@ -1,12 +1,14 @@
 {% extends "layouts/faf.html" %}
 {% set title = "What type of meter do you have?" %}
 
+{#
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "/faf/energy-update"
   }) }}
 {% endblock %}
+#}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -41,7 +43,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-        
+
         {% include "shared/_previous-answers.html" %}
       </form>
     </div>

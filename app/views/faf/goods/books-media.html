@@ -1,12 +1,14 @@
 {% extends "layouts/faf.html" %}
 {% set title = "What goods are you looking for in books, stationery and education supplies?" %}
 
+{#
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "/faf/start"
   }) }}
 {% endblock %}
+#}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -36,7 +38,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-        
+
         {% include "shared/_previous-answers.html" %}
       </form>
     </div>

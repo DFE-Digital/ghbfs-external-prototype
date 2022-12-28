@@ -1,12 +1,14 @@
 {% extends "layouts/faf.html" %}
 {% set title = "What services are you looking for in facilities management and estates?" %}
 
+{#
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "/faf/energy-update"
   }) }}
 {% endblock %}
+#}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -60,7 +62,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-        
+
         {% include "shared/_previous-answers.html" %}
       </form>
     </div>
