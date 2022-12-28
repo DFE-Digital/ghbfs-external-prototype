@@ -1,0 +1,47 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What services are you looking for in buildings maintenance?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/services/facilities"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "building-maintenance",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "boilers-plumbing",
+              text: "Boilers and plumbing"
+            },
+            {
+              value: "total-buildings-maintenance",
+              text: "Total buildings maintenance"
+            },
+            {
+              value: "waste-management",
+              text: "Waste management"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

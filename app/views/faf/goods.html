@@ -1,0 +1,55 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What goods do you need?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "goods",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "air-cleaning",
+              text: "Air cleaning units"
+            },
+            {
+              value: "books-media",
+              text: "Books, stationery and education supplies"
+            },
+            {
+              value: "furniture",
+              text: "Furniture"
+            },
+            {
+              value: "ict",
+              text: "ICT"
+            },
+            {
+              value: "ppe",
+              text: "Personal protective equipment (PPE) and cleaning"
+            }
+          ]
+        }) }}
+      
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

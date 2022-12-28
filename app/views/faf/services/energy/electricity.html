@@ -1,0 +1,48 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What type of meter do you have?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/energy-update"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "electricity",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "meter-half-hourly",
+              text: "Half hourly metered"
+            },
+            {
+              value: "non-half-hourly",
+              text: "Non-half hourly metered"
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with meter types",
+          html: " <p>Find out which meter you have by checking the MPAN number. This is on your energy bill.</p><img src='/assets/images/mpan-example.png' alt='Example of energy bill with MPAN highlighted' class='govuk-!-margin-bottom-3'><p>The first two numbers after the S show which meter you have. If it’s 00, it’s a half hourly meter, any other number means it’s a non-half hourly meter.</p>"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

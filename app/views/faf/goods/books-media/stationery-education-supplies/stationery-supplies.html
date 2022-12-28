@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/_faf-inset-top.html" %}
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Books for schools</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Eastern Shires Purchasing Organisation (ESPO) framework.</p> 
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+     <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>digital books, e-books, e-audiobooks and print books</li>
+        <li>fiction and curriculum books such as children's and adult fiction titles, textbooks, revision guides and reading scheme sets used in schools and colleges by students</li>
+        <li>reference materials, handbooks and manuals such as dictionaries, encyclopaedias, a variety of reference books relevant to schools and the wider public sector. </li>
+      </ul>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>up to 35% off some titles</li>
+        <li>a <a href="https://www.espo.org/Pages/Books-for-schools-framework-376E-guide">step-by-step guide to using this framework</a></li>
+      </ul>
+      <p class="govuk-body">All frameworks also offer:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>compliance with the relevant procurement regulations</li>
+        <li>suppliers pre-checked by the approved framework provider</li>
+        <li>pre-agreed terms and conditions</li>
+      </ul>
+
+
+      <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.espo.org/frameworks/libraries/ebooks-eaudiobooks-and-print-books-376e-20.html",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    <a href="https://www.espo.org/frameworks/libraries/ebooks-eaudiobooks-and-print-books-376e-20.html" role="button" draggable="false" class="govuk-button govuk-!-margin-top-5 frameworkbutton--external" data-module="govuk-button">
+      Visit the <span id="supplier">ESPO</span> website
+    </a>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+  </div>
+</div>
+
+{% endblock %}

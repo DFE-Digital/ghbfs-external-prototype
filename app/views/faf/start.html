@@ -1,0 +1,51 @@
+{% extends "layouts/faf.html" %}
+{% set title = "Benefits of using a framework" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+
+        <h1 class="govuk-heading-l">{{ title }}</h1>
+        
+        {% set html %}
+          <p class="govuk-notification-banner__heading">
+            <a class="govuk-notification-banner__link" href="energy-guidance">What you can do about rising energy prices</a>
+          </p>
+          <p class="govuk-notification-content">Last updated 29 September 2022</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          titleText: "Information and advice"
+        }) }}
+
+        {{ govukInsetText({
+          html: "The DfE <a href='../support-faf/start'>Get help buying for schools</a> will help you prepare and research before buying to help you get the best deal and save money."
+        }) }}
+
+        <p>You can use frameworks without having to run a full buying process.</p>
+
+        <p>Each framework agreement has:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>details of products, services and suppliers available</li>
+          <li>an agreed pricing structure and terms and conditions</li>
+          <li>guidance on how to buy</li>
+        </ul>
+
+        <p>Buying from a framework can be quicker and easier than getting bids or quotes because the agreements:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have already been through a full competitive tender process</li>
+          <li>have been quality checked</li>
+          <li>are checked to make sure they comply with the law</li>
+          <li>may have draft specifications and help available</li>
+        </ul>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

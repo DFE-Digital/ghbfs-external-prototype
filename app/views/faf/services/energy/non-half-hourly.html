@@ -1,0 +1,49 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What level of support are you looking for?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/energy-update"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "non-half-hourly",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "support",
+              text: "General helpdesk",
+              hint: {
+                text: "For schools and MATs with knowledge or experience of procurement (only need minimal guidance)."
+              }
+            },
+            {
+              value: "specific",
+              text: "Schools focused",
+              hint: {
+                text: "Varying levels of support for schools and MATs with any level of knowledge or experience of procurement (including detailed end-to-end support)."
+              }
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/_faf-inset-top.html" %}
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Internal fit-out and maintenance</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the YPO framework.</p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <p>The provision of building services once a building is constructed to enable on-going maintenance, extension and refurbishment for schools. This framework is suitable for smaller ad-hoc service requirements and also for a more long-term service project.</p>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>YPO can fully manage the customer’s further competition (call-off) process if required</li>
+        <li>offers local suppliers or providers, and small and medium-sized enterprises (SME’s) the opportunity to bid and be awarded to the dynamic purchasing system (DPS)</li>
+        <li>easy to use documentation and wide range of services that schools can call off</li>
+      </ul>
+    </div>
+
+    <p class="govuk-body">All frameworks also offer:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>compliance with The Official Journal of the European Union (OJEU) principles and regulations</li>
+      <li>a list of checked suppliers</li>
+      <li>pre-agreed terms and conditions</li>
+    </ul>
+
+    <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.ypo.co.uk/unbxd-all-search?q=dfeapproved882",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+   
+  </div>
+</div>
+{% endblock %}

@@ -14,6 +14,8 @@
       <form method="post">
       <span class="govuk-caption-l">About your procurement</span>
         {{ govukRadios({
+          idPrefix: "bought-before",
+          name: "bought-before",
           fieldset: {
             legend: {
               text: title,
@@ -26,10 +28,12 @@
           },
           items: [       
           {
-              text: "Yes"
+              text: "Yes",
+              value: "yes"
             },
             {
-              text: "No"
+              text: "No",
+              value: "no"
             }
           ]
         }) }}

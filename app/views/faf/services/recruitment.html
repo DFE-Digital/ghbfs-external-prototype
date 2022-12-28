@@ -1,0 +1,43 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What services are you looking for in recruitment, human resources and training?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/energy-update"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "recruitment",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "npq",
+              text: "National professional qualifications (NPQ)"
+            },
+            {
+              value: "supply-teachers",
+              text: "Supply teachers"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

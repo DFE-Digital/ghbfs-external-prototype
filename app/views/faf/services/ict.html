@@ -1,0 +1,59 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What services are you looking for in ICT?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/energy-update"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "ict",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "cloud",
+              text: "Cloud"
+            },
+            {
+              value: "cyber-security",
+              text: "Cyber security"
+            },
+            {
+              value: "end-to-end-ict",
+              text: "End-to-end ICT solutions"
+            },
+            {
+              value: "mis",
+              text: "Management information systems (MIS)"
+            },
+            {
+              value: "mfd-service",
+              text: "Printers, copiers and multifunctional devices (MFDs)"
+            },
+            {
+              value: "telecoms-broadband-service",
+              text: "Telecoms and broadband"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

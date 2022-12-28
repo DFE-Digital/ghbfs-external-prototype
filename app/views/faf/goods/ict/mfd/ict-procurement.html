@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    {% include "includes/_faf-inset-top.html" %}
+
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">Everything ICT</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Everything ICT framework.</p> 
+ 
+
+
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Hardware such as PCs, laptops, tablets, servers, printers, multi-functional devices.</li>
+        <li>Software such as Microsoft O365, Google, Adobe, cyber security, mobile device management, educational content, MIS and financial packages.</li>
+        <li>Connectivity such as broadband, dedicated lines, 4G, 5G and satellite.</li>
+        <li>Infrastructure such as wifi, cabling, wide area networks and network management.</li>
+        <li>Cloud services, including Microsoft Azure, automated backup services, remote desktop, disaster recovery, VoIP systems.</li>
+        <li>Mix of fully and partially managed services.</li>
+        <li>IT Support, including staff training, onsite support technicians and remote helpdesk.</li>
+        <li>Consultancy services, including cloud readiness assessment, review of technical infrastructure and existing contract reviews.</li>
+      </ul>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Choose from over 100 suppliers, including Microsoft, Dell, HP, Cisco, SMART, Promethean and niche providers.</li>
+        <li>Save time with quotes which are relevant to you, often within 24 hours.</li>
+        <li>Save money with reduced pricing through national deals.</li>
+        <li>Multiple quotes or direct awards.</li>
+        <li>Better value through suppliers benchmarked on cost, quality and service.</li>
+        <li>Free advice on cloud solutions, relevant suppliers, procurement regulations and tendering processes.</li>
+      </ul>
+
+    <p class="govuk-body">All frameworks also offer:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>compliance with The Official Journal of the European Union (OJEU) principles and regulations</li>
+      <li>a list of checked suppliers</li>
+      <li>pre-agreed terms and conditions</li>
+    </ul>
+
+    <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.everythingict.org",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+
+  </div>
+</div>
+{% endblock %}

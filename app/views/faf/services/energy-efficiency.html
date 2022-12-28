@@ -1,0 +1,51 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What services are you looking for in energy and utilities?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/energy"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "energy-efficiency",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "building-efficiency-heating",
+              text: "Building efficiency including heating and electrical"
+            },
+            {
+              value: "energy-audits",
+              text: "Energy audits"
+            },
+            {
+              value: "energy-efficiency-project-management",
+              text: "Energy efficiency consultancy and project management"
+            },
+            {
+              value: "lighting",
+              text: "Lighting and renewables"
+            }
+          ]
+        }) }}
+   
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

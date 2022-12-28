@@ -1,0 +1,72 @@
+{% extends "layouts/faf.html" %}
+{% set title = "What services do you need?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/faf/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
+        {{ govukRadios({
+          name: "services",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "consultancy-services",
+              text: "Consultancy services"
+            },
+            {
+              value: "energy",
+              text: "Energy and utilities"
+            },
+            {
+              value: "energy-efficiency",
+              text: "Energy efficiency"
+            },
+            {
+              value: "facilities",
+              text: "Facilities management and estates"
+            },
+            {
+              value: "financial",
+              text: "Financial"
+            },
+            {
+              value: "ict",
+              text: "ICT"
+            },
+            {
+              value: "legal",
+              text: "Legal"
+            },
+            {
+              value: "recruitment",
+              text: "Recruitment, HR and training"
+            },
+            {
+              value: "transport",
+              text: "Transport"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {# {% include "../includes/_previous-answers.html" %} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

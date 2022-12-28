@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a DfE approved framework for your school
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Find a DfE approved framework for your school",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a real service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    
+    {% include "includes/_faf-inset-top.html" %}
+
+    <span class="govuk-caption-l">Your recommendation</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3" id="resulttitle">ICT networking and storage solutions</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Based on your answers, we think you should use the Crescent Purchasing Consortium (CPC) framework.</p> 
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-markdown">
+      <h2 class="govuk-heading-m" id="what-it-offers">What it offers</h2>
+      <p>Designed for the education sector this framework offers:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>On-premise solutions - IT and network infrastructure that are entirely delivered on-premise and includes but not limited to network and storage hardware, back-up, archiving and data protection systems</li>
+      <li>Cloud and hybrid cloud solutions - IT infrastructure solutions that are entirely cloud based or a hybrid cloud storage solution, comprising both on-premise and cloud components</li>
+      <li>Consultancy services - specifically for ICT consultancy and design services where a solution is yet to be defined, which may fit into either of the solutions above.</li>
+      </ul>
+      <h2 class="govuk-heading-m" id="benefits">Benefits</h2>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>save time using the framework rather than completing a full tender process</li>
+      <li>easy and compliant route if you are looking to adopt a cloud solution</li>
+      <li>ability to purchase robust network security solutions </li>
+      </ul>
+
+
+
+    <p class="govuk-body">All frameworks also offer:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>compliance with The Official Journal of the European Union (OJEU) principles and regulations</li>
+      <li>a list of checked suppliers</li>
+      <li>pre-agreed terms and conditions</li>
+    </ul>
+
+    <form>
+    {{ govukRadios({
+      name: "where-do-you-live",
+      fieldset: {
+        legend: {
+          text: "Would you like help with this framework from the DfE?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes~../../../../support-faf/start",
+          text: "Yes, I'd like help from DfE to use this framework"
+        },
+        {
+          value: "no~https://www.thecpc.ac.uk/suppliers/categories/framework.php?categoryID=5&frameworkID=263",
+          text: "No, I'd prefer to use this framework on my own"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+
+    {% include "../../../../includes/_previous-answers.html" %}
+
+  </div>
+</div>
+{% endblock %}
