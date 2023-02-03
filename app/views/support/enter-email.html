@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+{% set title = "What is your email address?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/enter-name"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <span class="govuk-caption-l">About you</span>
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        {{ govukInput({
+          fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "We will only use this to contact you about your request"
+          },
+          id: "email",
+          name: "email"
+        }) }}
+
+       
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

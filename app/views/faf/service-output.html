@@ -1,20 +1,13 @@
 {% extends "layouts/faf.html" %}
 {% set title = "After you’ve used the service" %}
-{#
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/faf/selection"
-  }) }}
-{% endblock %}
-#}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="" method="post">
         <h1 class="govuk-heading-l">{{ title }}</h1>
         {{ govukInsetText({
-          html: "The DfE <a href=''>Get help buying for schools</a> will help you prepare and research before buying to help you get the best deal and save money."
+          html: "The DfE <a href='../support/start'>Get help buying for schools</a> will help you prepare and research before buying to help you get the best deal and save money."
         }) }}
         <p class="govuk-body">When you’ve answered the relevant questions, you’ll be given the most suitable framework based on your answers. This will point you to the providers’ website where you can get quotes from suppliers on the framework.</p>
         {{ govukButton({

@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+{% set title = "Enter your name" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/support/check-school"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <span class="govuk-caption-l">About you</span>
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        {% set html %}
+          <p>This will help us give you the right level of support.</p>
+        {% endset %}
+
+        {{ govukInput({
+          label: {
+            text: "First name"
+          },
+          id: "first-name",
+          name: "first-name"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Last name"
+          },
+          id: "last-name",
+          name: "last-name"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

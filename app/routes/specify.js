@@ -45,5 +45,4 @@ module.exports = router => {
   router.post('/specify/delete-confirmation/', (req, res) => {
     res.redirect('/specify/dashboard')
   })
-
 }
