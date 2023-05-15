@@ -8,19 +8,30 @@
 @import "../../views/_components/summary-card/summary-card.scss";
 @import "components/_card.scss";
 
+.govuk-width-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .govuk-main-wrapper--auto-spacing {
     margin-top: 0px !important;
     padding-top: 0px;
     padding-bottom: 30px;
 }
+
+//manual stylesheets
+
 .manual-header {
     background-color: #1d70b8;
     margin: 0px;
-    padding: 30px 15px;
+    padding: 0px 30px 30px 30px;
 }
 .manual-header h1 {
     color: white;
     font-size: 36px;
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+
 }
 .manual-header p {
     color: white;
@@ -32,6 +43,7 @@
     display: list-item;
     text-align: -webkit-match-parent;
 }
+
 
 .gem-c-lead-paragraph {
     font-size: 24px;
@@ -46,11 +58,22 @@
     max-width: 30em;
 }
 .app-contents-list {
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 .app-mainstream-guide-contents-list {
     padding-bottom: 0.25rem;
+    border-bottom: 1px solid #b1b4b6;
+}
+
+.app-contents-list__list, .app-contents-list__nested-list {
+    color: #0b0c0c;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
 }
 
 li {
@@ -121,7 +144,6 @@ ul {
 
 .dd {
     display: block;
-    margin-inline-start: 40px;
     list-style: none;
 }
 .dd a {
@@ -131,6 +153,17 @@ ul {
 .gem-c-metadata--inverse, .gem-c-metadata--inverse a {
     color: #ffffff !important;
 }
+
+.gem-c-metadata a {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem);
+    text-underline-offset: 0.1578em;
+    font-weight: bold;
+}
+
 .gem-c-metadata {
     margin-bottom: 40px;
     font-size: 16px;
@@ -142,8 +175,7 @@ ul {
 }
 .metadata-logo-wrapper {
     border-top: 1px solid #b1b4b6;
-    margin-left: -15px;
-    margin-right: -15px;
+ 
 }
 .metadata-logo-wrapper .metadata-column {
     padding-left: 0;
@@ -151,7 +183,7 @@ ul {
 }
 .govuk-grid-row {
     margin-right: -15px;
-    margin-left: -15px;
+    margin-left: 0px;
 }
 .div {
     display: block;
@@ -168,10 +200,7 @@ ul {
 .gem-c-layout-footer--border {
     border-top: 10px solid #1d70b8;
 }
-.govuk-grid-row {
-    margin-right: -15px;
-    margin-left: -15px;
-}
+
 .govuk-\!-margin-bottom-8 {
     margin-bottom: 50px !important;
 }
@@ -179,8 +208,8 @@ ul {
     // width: 66.6666666667%;
     // float: left;
     box-sizing: border-box;
-    width: 100%;
-    padding: 0 15px;
+    // width: 100%;
+    padding: 0px;
     }
 
 .govuk-\!-margin-top-8 {
@@ -214,10 +243,10 @@ ul {
      font-family: "GDS Transport",arial,sans-serif;
  }
 
-//  svg[Attributes Style] {
-//     height: 18;
-//     width: 18;
-// }
+// svg[Attributes Style] {
+    //  height: 18;
+    //  width: 18;
+//  }
 
 svg:not(:root) {
     overflow-clip-margin: content-box;
@@ -281,4 +310,38 @@ svg:not(:root) {
 .govuk-grid-column-two-thirds metadata-column  {
     padding-left: 0 !important;
     margin-left: 0 !important;
+}
+
+.gem-c-single-page-notification-button__submit:hover {
+    background-color: #f3f2f1;
+    color: #003078;
+}
+.gem-c-single-page-notification-button__submit {
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #b1b4b6;
+    color: #1d70b8;
+    cursor: pointer;
+    background: none;
+}
+.gem-c-print-link__link:hover, .gem-c-print-link__button:hover {
+    background-color: #f3f2f1;
+}
+.govuk-link:hover {
+    color: #003078;
+}
+.gem-c-print-link__button {
+    border: 1px solid #b1b4b6;
+    color: #1d70b8;
+    cursor: pointer;
+    margin: 50px 0 0 0;
+}
+.gem-c-print-link__link, .gem-c-print-link__button {
+    background: url(https://www.gov.uk/assets/government-frontend/govu…bfe07f3b60cafe820be2d0ca670aa2f4565f5deed4d5f.png) no-repeat 10px 50%;
+    background-size: 16px 18px;
+    padding: 10px 10px 10px 36px;
+    text-decoration: none;
+}
+.app-c-contents-list-with-body__link-container { 
+    margin: 50px 0 50px 0;
 }
