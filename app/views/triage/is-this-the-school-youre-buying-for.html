@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="/triage/path/of/next/page" method="post">
+        <span class="govuk-caption-l">About your school</span>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="event-name">
+              Is this the school you're buying for?
+            </label>
+          </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name and Address"
+            },
+            value: {
+              text: "	St Patrick's Catholic Primary School,
+              Dudley Road,
+              B18 7QW"
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Local authority"
+            },
+            value: {
+              text: "	Birmingham "
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Headteacher / Principal"
+            },
+            value: {
+              text: "Miss Kathryn Cairns"
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Phase of education"
+            },
+            value: {
+              text: "	Primary"
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "School type"
+            },
+            value: {
+              text: "	Voluntary aided school"
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "IDs"
+            },
+            value: {
+              text: "URN: 103439
+              DfE number: 3346
+              UKPRN: 10079470"
+            },
+            actions: {
+              items: [
+              ]
+            }
+          }
+        ]
+        
+      }) }}
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                No
+              </label>
+            </div>
+        
+          </div>
+        </fieldset>
+      </div>
+
+      <div>
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+    </div>
+  </div>
+{% endblock %}

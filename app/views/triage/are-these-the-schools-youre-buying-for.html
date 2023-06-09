@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form class="form" action="/triage/what-are-your-contact-details" method="post">
+        <span class="govuk-caption-l">About your school</span>
+
+      <h1 class="govuk-heading-l">
+        Are these the schools you're buying for? 
+      </h1>
+
+      <table class="govuk-table">
+        <p class="govuk-body">3 schools selected from REACH2 ACADEMY TRUST</p>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            
+            <th scope="col" class="govuk-table__header app-custom-class">School name</th>
+            <th scope="col" class="govuk-table__header app-custom-class">Address</th>
+            <th scope="col" class="govuk-table__header app-custom-class">Phase of education</th>
+            <th scope="col" class="govuk-table__header app-custom-class">Local authority</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Aerodrome Primary Academy</td>
+            <td class="govuk-table__cell">Goodwin Road, Croydon, Surrey, CR0 4EJ
+            <td class="govuk-table__cell">Primary</td>
+            <td class="govuk-table__cell">Croydon</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"> Beccles Primary Academy
+            <td class="govuk-table__cell">Ellough Road
+              Suffolk
+              NR34 7AB
+            <td class="govuk-table__cell">Primary</td>
+            <td class="govuk-table__cell">Suffolk</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Brampton Primary Academy
+            <td class="govuk-table__cell">Brampton Road
+              Bexleyheath
+              DA7 4SL
+            <td class="govuk-table__cell">Primary</td>
+            <td class="govuk-table__cell">Kent</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                No, go back
+            </div>
+        
+          </div>
+        </fieldset>
+      </div>
+
+    
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

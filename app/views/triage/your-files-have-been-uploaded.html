@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="is-there-anything-else-we-should-know" method="post">
+        <span class="govuk-caption-l">About your request</span>
+
+        <h1 class="govuk-heading-l" data-energy-bill-upload-target="title" aria-live="polite">
+          Your files have been uploaded
+        </h1>
+        <div class="upload-item dz-image-preview dz-processing dz-success dz-complete">        <div class="upload-row file-details">          <h3 class="govuk-heading-s"><span data-dz-name="">Screenshot 2023-04-25 at 16.02.57.png</span> (<span data-dz-size=""><strong>0.1</strong> MB</span>)</h3>          <a href="#" class="btn-remove govuk-link govuk-link--no-visited-state" data-dz-remove="">Remove</a>        </div>        <div class="upload-row progress-status-container">          <p class="govuk-body-s progress-status complete" data-dz-errormessage="">Complete</p>          <div class="upload-progress-container">            <div data-dz-uploadprogress="" class="upload-progress" aria-valuenow="100" style="width: 100%;"></div>          </div>        </div>      </div>
+        
+        <button id="btn-continue" class="govuk-button" data-action="click->energy-bill-upload#onContinueToUploadClicked" data-energy-bill-upload-target="btnContinue">
+          Continue
+        </button>
+        <button id="btn-add-more-files" class="govuk-button govuk-button--secondary" data-action="click->energy-bill-upload#onAddMoreFilesClicked" data-energy-bill-upload-target="btnAddMoreFiles">
+          Add more files
+        </button>
+       
+          
+        </div>
+      
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

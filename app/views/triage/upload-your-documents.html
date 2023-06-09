@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="your-files-have-been-uploaded" method="post">
+        <span class="govuk-caption-l">About your request</span>
+
+        <h1 class="govuk-heading-l" data-energy-bill-upload-target="title" aria-live="polite">
+          Upload your documents
+        </h1>
+        <p class="govuk-body" data-energy-bill-upload-target="lblHint">Upload bills, site maps or floorplans you told us about.</p>
+          <p class="govuk-body" data-energy-bill-upload-target="lblHint">
+Also include specifications, quotes or any other documents that you feel are relevant to this procurement.</p>
+        <div class="drop-zone-container govuk-!-margin-bottom-5" data-controller="dropzone" data-dropzone-list-files-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/list" data-dropzone-add-file-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/upload" data-dropzone-remove-file-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/remove">
+    
+
+          <div class="drop-zone govuk-!-margin-bottom-5" data-energy-bill-upload-target="dropZone">
+            <p class="govuk-body">Drag and drop files here or</p>
+      
+            <span class="govuk-button govuk-button--secondary dz-clickable" data-dropzone-target="btnDisplayFileDialog">
+              Choose files
+            </span>
+          </div>
+      
+          <div class="file-previews">
+            <div class="files-added-now govuk-!-margin-bottom-5 govuk-!-display-none" data-energy-bill-upload-target="filesAddedNow" data-dropzone-target="filePreview">
+              <h2 class="govuk-heading-m">
+                Files added
+              </h2>
+            </div>
+            <div class="upload-item dz-image-preview">        <div class="upload-row file-details">          <h3 class="govuk-heading-s"><span data-dz-name="">Screenshot 2023-04-25 at 16.02.57.png</span> (<span data-dz-size=""><strong>0.1</strong> MB</span>)</h3>          <a href="#" class="btn-remove govuk-link govuk-link--no-visited-state" data-dz-remove="">Remove</a>        </div>        <div class="upload-row progress-status-container">          <p class="govuk-body-s progress-status govuk-!-display-none" data-dz-errormessage=""></p>          <div class="upload-progress-container govuk-!-display-none">            <div data-dz-uploadprogress="" class="upload-progress" aria-valuenow="0"></div>          </div>        </div>      </div>
+      
+            <div class="files-added-before govuk-!-margin-bottom-5 govuk-!-display-none" data-energy-bill-upload-target="filesAddedBefore">
+              <h2 class="govuk-heading-m">
+                Files already uploaded
+              </h2>
+            </div>
+          </div>
+        </div>
+        <button id="btn-continue" class="govuk-button" data-action="click->energy-bill-upload#onContinueToUploadClicked" data-energy-bill-upload-target="btnContinue">
+          Continue to upload
+        </button>
+       
+          
+        </div>
+      
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
