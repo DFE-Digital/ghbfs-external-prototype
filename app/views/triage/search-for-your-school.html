@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/triage/search-for-school-answer" method="post">
+        <span class="govuk-caption-l">About your school</span>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="event-name">
+              Search for your school
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            Enter the name, postcode or unique reference number (URN) of your school
+          </div>
+          <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
+        </div>
+       
+       <div> <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Can't find it?
+          </span>
+        </summary>
+        <div class="govuk-details__text">This search lists single schools in England, such as local authority maintained schools, or an academy in a single or multi-academy trust. 
+          <p class="govuk-body"> <a class="govuk-link" href="http://localhost:3000/search-for-an-academy-trust-or-federation">Search for an academy trust or federation</a> instead.</p></div>
+        <div class="govuk-details__text">
+          <p class="govuk-body">You can use the <a class="govuk-link" href="https://www.get-information-schools.service.gov.uk/">Get information about schools</a> service if:</p>
+          <ul class="govuk-list govuk-list--bullet">
+              <li>you want to find your school's URN to help with the search</li>
+              <li>you cannot find your school in the search and want to check that the DfE has the correct details</li>
+          </ul>
+        </div>
+        <div class="govuk-details__text">This service is available to all state-funded primary, secondary, special and alternative provision schools with pupils aged between 5 to 16 years old.</div>
+        <div class="govuk-details__text">Private, voluntary-aided and independent early years providers, and institutions which only have pupils aged 16 years and above, are not eligible for this service.</div>
+        </details>
+      </div>
+       
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

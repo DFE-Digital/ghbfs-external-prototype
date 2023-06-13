@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Which school are you buying for? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/triage/what-type-of-goods-and-services-do-you-need" method="post">
+
+      <span class="govuk-caption-l">About your school</span>
+        
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" aria-describedby="establishment-name-hint">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+  
+    <h1 class="govuk-fieldset__heading">
+      Which school are you buying for?
+    </h1>
+  
+  </legend>
+  
+  <div id="establishment-name-hint" class="govuk-hint">
+    You are linked to more than one school. Select the one that's related to your request.
+  </div>
+
+
+  <div class="govuk-radios" data-module="govuk-radios">
+    
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="establishment-name" name="establishment-name" type="radio" value="Hope Primary School">
+          <label class="govuk-label govuk-radios__label" for="establishment-name">
+      Hope Primary School
+      </label>
+          
+        </div>
+        
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="establishment-name-2" name="establishment-name" type="radio" value="Wellington Primary School (MAT)">
+          <label class="govuk-label govuk-radios__label" for="establishment-name-2">
+           Wellington Primary School (MAT)
+      </label>
+          
+        </div>
+        
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="establishment-name-3" name="establishment-name" type="radio" value="Susan Lawrence Junior School">
+          <label class="govuk-label govuk-radios__label" for="establishment-name-3">
+           Susan Lawrence Junior School 
+      </label>
+        </div>
+  </div>
+  
+</fieldset>
+
+</div>
+      </form>
+    </div>
+  </div>
+    
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
