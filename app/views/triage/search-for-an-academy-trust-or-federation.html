@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Search for an academy trust or federation – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,7 +26,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="is-this-the-academy-trust-or-federation-youre-buying-for" method="post">
+      <form class="form" method="post">
         <span class="govuk-caption-l">About your school</span>
 
         <div class="govuk-form-group">
@@ -41,25 +41,24 @@
           <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
         </div>
        
-       <div> <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Can't find it?
-          </span>
-        </summary>
-        <div class="govuk-details__text">This search lists single schools in England, such as local authority maintained schools, or an academy in a single or multi-academy trust. Search for an academy trust or federation instead.</a></div>
-        <div class="govuk-details__text">
-          <p class="govuk-body">You can use the <a class="govuk-link" href="https://www.get-information-schools.service.gov.uk/">Get information about schools</a> service if:</p>
-          <ul class="govuk-list govuk-list--bullet">
-              <li>you want to find your academy trust or federation's UID or UKPRN to help with the search</li>
-              <li>you cannot find your academy trust or federation in the search and want to check that the DfE has the correct details</li>
-          </ul>
-        </div>
-        <div class="govuk-details__text">This service is available to all state-funded primary, secondary, special and alternative provision schools with pupils aged between 5 to 16 years old.</div>
-        <div class="govuk-details__text">Private, voluntary-aided and independent early years providers, and institutions which only have pupils aged 16 years and above, are not eligible for this service.</div>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Can't find it?
+            </span>
+          </summary>
+        
+          <div class="govuk-details__text">This search lists academy trusts and federations. <a class="govuk-link" href="/triage/search-for-your-school">Search for a single school instead.</a></div>
+          <div class="govuk-details__text">
+            <p class="govuk-body">You can use the <a class="govuk-link" href="https://www.get-information-schools.service.gov.uk/">Get information about schools</a> service if:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>you want to find your academy trust or federation’s UID or UKPRN to help with the search</li>
+                <li>you cannot find your academy trust or federation in the search and want to check that the DfE has the correct details</li>
+            </ul>
+          </div>
+          <div class="govuk-details__text">This service is available to all state-funded primary, secondary, special and alternative provision schools with pupils aged between 5 to 16 years old.</div>
+          <div class="govuk-details__text">Private, voluntary-aided and independent early years providers, and institutions which only have pupils aged 16 years and above, are not eligible for this service.</div>
         </details>
-      </div>
-       
 
         {{ govukButton({
           text: "Continue"

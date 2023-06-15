@@ -1,8 +1,5 @@
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
+{% set title = "Search for your school" %}
 
 {% block beforeContent %}
 <div class="govuk-phase-banner">
@@ -21,54 +18,121 @@
 }) }}
 {% endblock %}
 
-{% block content %}
+{% block pageScripts %}
+  <link href="/public/stylesheets/accessible-autocomplete.min.css" media="all" rel="stylesheet" type="text/css" />
+  <script src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
 
+  <script type="text/javascript">
+  
+
+  function customSuggest (query, syncResults) {
+          var results = [
+  { URN: "100000", EstablishmentName: "The Aldgate School", Postcode: "EC3A 5DE"},
+  { URN: "100002", EstablishmentName: "St Paul's Cathedral School", Postcode: "EC4M 9AD"},
+  { URN: "100005", EstablishmentName: "Thomas Coram Centre", Postcode: "WC1N 2NY"},
+  { URN: "100006", EstablishmentName: "CCfL Key Stage 4 PRU", Postcode: "NW3 2NY"},
+  { URN: "100007", EstablishmentName: "Camden Primary Pupil Referral Unit", Postcode: "NW1 3EX"},
+  { URN: "100008", EstablishmentName: "Argyle Primary School", Postcode: "WC1H 9EG"},
+  { URN: "100009", EstablishmentName: "Beckford Primary School", Postcode: "NW6 1QL"},
+  { URN: "100010", EstablishmentName: "Brecknock Primary School", Postcode: "NW1 9AL"},
+  { URN: "100011", EstablishmentName: "Brookfield Primary School", Postcode: "N19 5DH"},
+  { URN: "100012", EstablishmentName: "Carlton Primary School", Postcode: "NW5 4AX"}
+]
+
+        syncResults(query
+          ? results.filter(function (result) {
+              var resultContains = result.URN.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              var endonymContains = result.EstablishmentName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              return resultContains || endonymContains
+            })
+          : []
+        )
+      }
+
+      function inputValueTemplate (result) {
+        return result && 'URN: ' + result.URN + ', ' + result.EstablishmentName + ', ' + result.Postcode
+      }
+
+      function suggestionTemplate (result) {
+        return result && 'URN: ' + result.URN + ', ' + '<strong>' + result.EstablishmentName + '</strong>' + ', ' + result.Postcode
+      }
+
+      element = document.querySelector('#my-autocomplete-container')
+      id = 'autocomplete-customTemplates'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: 'result',
+        source: customSuggest,
+        templates: {
+          inputValue: inputValueTemplate,
+          suggestion: suggestionTemplate
+        }
+      })
+
+      autocomplete = document.querySelector('#autocomplete-customTemplates')
+      establishmentURN = document.querySelector('#establishment-urn')
+      establishmentName = document.querySelector('#establishment-name')
+      establishmentPostcode = document.querySelector('#establishment-postcode')
+
+
+      autocomplete.addEventListener('blur', (event) => {
+        var schoolParams = autocomplete.value.split(',');
+        console.log(schoolParams);
+        console.log('left the target')
+        console.log(autocomplete.value)
+        establishmentURN.value = schoolParams[0].slice(4);
+        establishmentName.value = schoolParams[1];
+        establishmentPostcode.value = schoolParams[2];
+      });
+
+
+  </script>
+{% endblock %}
+
+{% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+      <span class="govuk-caption-l">About your school</span>
 
-      <form class="form" action="/triage/search-for-school-answer" method="post">
-        <span class="govuk-caption-l">About your school</span>
 
         <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="event-name">
-              Search for your school
-            </label>
-          </h1>
+          <label for="my-autocomplete" class="govuk-label govuk-label--l">Search for your school</label>
           <div id="event-name-hint" class="govuk-hint">
             Enter the name, postcode or unique reference number (URN) of your school
           </div>
           <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
-        </div>
-       
-       <div> <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Can't find it?
-          </span>
-        </summary>
-        <div class="govuk-details__text">This search lists single schools in England, such as local authority maintained schools, or an academy in a single or multi-academy trust. 
-          <p class="govuk-body"> <a class="govuk-link" href="http://localhost:3000/search-for-an-academy-trust-or-federation">Search for an academy trust or federation</a> instead.</p></div>
-        <div class="govuk-details__text">
-          <p class="govuk-body">You can use the <a class="govuk-link" href="https://www.get-information-schools.service.gov.uk/">Get information about schools</a> service if:</p>
-          <ul class="govuk-list govuk-list--bullet">
-              <li>you want to find your school's URN to help with the search</li>
-              <li>you cannot find your school in the search and want to check that the DfE has the correct details</li>
-          </ul>
-        </div>
-        <div class="govuk-details__text">This service is available to all state-funded primary, secondary, special and alternative provision schools with pupils aged between 5 to 16 years old.</div>
-        <div class="govuk-details__text">Private, voluntary-aided and independent early years providers, and institutions which only have pupils aged 16 years and above, are not eligible for this service.</div>
-        </details>
-      </div>
-       
 
+          <div id="my-autocomplete-container"></div>
+        </div>
+
+        <input type="hidden" id="establishment-urn" name="establishment-urn" value="">
+
+        <input type="hidden" id="establishment-name" name="establishment-name" value="">
+
+        <input type="hidden" id="establishment-postcode" name="establishment-postcode" value="">
+
+        <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Can't find it?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    This search lists single schools in England, such as local authority maintained schools, or an academy in a single or multi-academy trust. <a href="triage/search-for-an-academy-trust-or-federation" class="govuk-link govuk-link--no-visited-state">Search for an academy trust or federation</a> instead.
+<br><br>
+This service is available to all state-funded primary, secondary, special and alternative provision schools with pupils aged between 5 to 16 years old.
+<br><br>
+Private, voluntary-aided and independent early years providers and institutions with pupils aged 16 years and above are not eligible for this service.
+  </div>
+</details>
+      
         {{ govukButton({
           text: "Continue"
         }) }}
 
       </form>
-
     </div>
   </div>
-
 {% endblock %}

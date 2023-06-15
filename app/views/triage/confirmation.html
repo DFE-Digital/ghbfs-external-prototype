@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Confirmation page – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -11,39 +11,36 @@
 
       {{ govukPanel({
         titleText: "Your request has been sent",
-        html: "Your case reference number is:<br><strong>HDJ2123F</strong>"
+        html: "We have sent a confirmation email to: <strong>admin@school.com</strong>"
       }) }}
 
-      <p>
-        We have sent a confirmation email to admin@school.ac.uk
-      </p>
 
       <h2 class="govuk-heading-m">
         What happens next
       </h2>
 
       <p>
-        The Get help buying for schools team will now review your request. We'll be in touch within 2 working days to find a convenient time to discuss your options.
+        Our procurement specialists will review your request and any documents if you’ve included them. We’ll be in touch within 2 working days of your request.
       </p>
 
       <p>
-        If you chose to email your floorplans, there will be instructions in the confirmation email telling you how to do this.
+        If you’ve chosen to email documents to us later, there’ll be instructions in your confirmation email telling you how to do this and where to send it to.
       </p>
       <p>
-        Please check to make sure you receive an email confirmation from us within the next 10 minutes. Check your junk folder if you do not see it.
+        Please check that you’ve received our confirmation email. If you do not see it in 10 minutes, check your junk folder.
       </p>
       <p>
-        You'll need to submit your request again if you do not receive an email from us because this is how we'll be contacting you.
+        You’ll need to submit your request again if you do not receive an email from us, because this is how we’ll be contacting you. </p>
        
         <h2 class="govuk-heading-m">
-          What you can do next
+          What to do next
         </h2>
   
 
-<p class="govuk-body">You can read our guidance about buying your school. It includes:</p>
+<p class="govuk-body">Read our guidance about:</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>advice on using frameworks</li>
-  <li>advice on compliant procurements </li>
+  <li> <a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools" class="govuk-link govuk-link--no-visited-state">compliant procurement processes</a></li>
+  <li> <a href="https://www.gov.uk/guidance/find-a-dfe-approved-framework-for-your-school" class="govuk-link govuk-link--no-visited-state">framework agreements and our framework tool</a></li>
 </ul>
 <p class="govuk-body">
   <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)

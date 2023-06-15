@@ -1,0 +1,90 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+
+{% block pageTitle %}
+What are your contact details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="what-type-of-goods-and-services-do-you-need" method="post">
+
+      <span class="govuk-caption-l">
+        About you
+      </span>
+    
+      {% call govukFieldset({
+        legend: {
+          text: "What are you're contact details?",
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+      
+        {{ govukInput({
+          label: {
+            text: "First name"
+          },
+          classes: "govuk-!-width-three-quarters",
+          id: "first-name",
+          name: "first-name",
+          autocomplete: "first-name"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Last name"
+          },
+          classes: "govuk-!-width-three-quarters",
+          id: "last-name",
+          name: "last-name"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Email"
+          },
+          classes: "govuk-!-width-three-quarters",
+          id: "email",
+          name: "email",
+          autocomplete: "email"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Telephone"
+          },
+          classes: "govuk-!-width-one-third",
+          id: "tel",
+          name: "tel",
+          autocomplete: "tel"
+        }) }}
+      
+      {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      {% endblock %}

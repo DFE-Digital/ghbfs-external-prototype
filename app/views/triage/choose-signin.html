@@ -2,22 +2,32 @@
 {% set title = "Do you have a DfE Sign-in account linked to the school that your request is about?" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/triage/start"
-  }) }}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">About your school</span>
+      
 
       <form action="" method="post">
 
       {{ govukRadios({
-        idPrefix: "DfE-Sign-in-account",
-        name: "DfE-Sign-in-account",
+        idPrefix: "signin",
+        name: "signin",
         fieldset: {
           legend: {
             text: title,

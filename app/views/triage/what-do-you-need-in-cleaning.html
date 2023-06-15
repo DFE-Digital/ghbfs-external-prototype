@@ -1,7 +1,9 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+What do you need in cleaning? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,49 +25,44 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="whats-your-current-budget-for-this-procurement" method="post">
         <span class="govuk-caption-l">About your goods or service</span>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What do you need in cleaning?
-              </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                  Cleaning products
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                  Cleaning services
-                </label>
-            </div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                  Personal protection equipment
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                  Other
-                </label>
-            </div>
-          </fieldset>
-          
-        </div>
-       {{ govukButton({
+
+{{ govukRadios({
+  name: "What do you need in cleaning?",
+  fieldset: {
+    legend: {
+      text: "What do you need in cleaning?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "cleaning-products",
+      text: "Cleaning products"
+    },
+    {
+      value: "cleaning-services",
+      text: "Cleaning services"
+    },
+    {
+      value: "personal-protection-equipment",
+      text: "Personal protection equipment"
+    },
+    {
+      value: "other",
+      text: "Other"
+    
+    }
+  ]
+}) }}
+
+        {{ govukButton({
           text: "Continue"
         }) }}
 

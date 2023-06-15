@@ -1,7 +1,10 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Has the notice period been served? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +18,7 @@
     </span>
   </p>
 </div>
-  {{ govukBackLink({
+{{ govukBackLink({
   text: "Back",
   href: "javascript:window.history.back()"
 }) }}
@@ -23,48 +26,71 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/triage/has-the-notice-been-served" method="post">
-        <span class="govuk-caption-l">About your current supplier</span>
+<form class="form" action="/triage/can-you-upload-floorplans-for-the-schools" method="post">
+  <span class="govuk-caption-l">About your current supplier</span>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Is there a notice period? 
-              </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                  No
-                </label>
-              </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                    Not sure
-                  </label>
-            </div>
-          </fieldset>
-          
-        </div>
-       {{ govukButton({
-          text: "Continue"
-        }) }}
 
-      </form>
+{% set yesHtml %}
+{{ govukDateInput({
+  id: "notice-served",
+  namePrefix: "notice-served",
+  fieldset: {
+    legend: {
+      text: "Enter the notice period end date"
+    }
+  },
+  hint: {
+    text: "For example, 31 8 2025"
+  }
+}) }}
+{% endset -%}
 
-    </div>
-  </div>
+{{ govukRadios({
+  name: "notice-served",
+  fieldset: {
+    legend: {
+      text: "Has the notice period been served?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  
+  },
+  items: [
+  {
+    value: "yes",
+    text: "Yes",
+    conditional: {
+      html: yesHtml
+    }
+  },
+  {
+    value: "no",
+    text: "No",
+    conditional: {
+      html: noHtml
+    }
+  },
+  {
+    value: "not-sure",
+    text: "Not sure",
+    conditional: {
+      html: notsureHtml
+    }
+  }
+]
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
+
+</div>
+</div>
 
 {% endblock %}
+

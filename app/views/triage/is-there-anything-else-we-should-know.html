@@ -1,7 +1,8 @@
 {% extends "layouts/main.html" %}
 
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Is there anything else we should know about your request? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,31 +24,30 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">About your request</span>
-      <form class="form" action="/triage/access-needs" method="post">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">About your request</span>
+    <form class="form" action="/triage/is-there-anything-else-we-should-know" method="post">
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l" for="more-detail">
-            Is there anything else we should know about your request?
-          </label>
-        </h1>
-        <div id="more-detail-hint" class="govuk-hint">
-          Briefly describe how we can help in a few sentences
-          </div>
-         
-        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="8" aria-describedby="more-detail-hint"></textarea>
-      </div>
+{{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Is there anything else we should know about your request?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Briefly describe how we can help in a few sentences"
+  }
+}) }}
+{{ govukButton({
+  text: "Continue"
+}) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+</form>
 
-      </form>
-
-    </div>
-  </div>
+</div>
+</div>
 
 {% endblock %}

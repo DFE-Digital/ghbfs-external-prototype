@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+{% set title = "Is this the academy trust or federation you're buying for?" %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <span class="govuk-caption-l">About your school</span>
+        {% set hint %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Group name"
+                },
+                value: {
+                  html: (data['establishment-name'] or 'Queensbridge High School' ) + ",<br>Queensbridge Road, Haggerston, Hackney,<br>London," + (data['establishment-postcode'] or 'W2 4TH')
+                }
+              },
+              {
+                key: {
+                  text: "Address"
+                },
+                value: {
+                  text: "Not provided"
+                }
+              },
+              {
+                key: {
+                  text: "Group type"
+                },
+                value: {
+                  text: "Federation"
+                }
+              },
+              {
+                key: {
+                  text: "ID"
+                },
+                value: {
+                  html: "UID: 1005" + (data['establishment-uid'] or '1005') + "</br>UKPRN: Not provided"
+                }
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "correct-academy",
+          name: "correct-academy",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: hint
+          },
+          items: [       
+          {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No, I need to choose another school"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

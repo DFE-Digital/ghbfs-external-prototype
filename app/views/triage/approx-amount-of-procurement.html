@@ -1,7 +1,9 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Approximately how much will the school be spending on this procurement in total? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,20 +31,29 @@
 
       <span class="govuk-caption-l">About your procurement</span>
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l" for="account-number">
-            Approximately how much will the school be spending on this procurement in total?
-          </label>
-        </h1>
-        <div class="govuk-hint" id="framework-support-form-procurement-amount-hint">  <p class="govuk-hint">This is the approximate amount you'll be spending over the lifetime of the contract. Use the value of a previous or existing contract if you're unsure.</p>
-          <p class="govuk-hint">We only use this value as a guide to understand your procurement better. We know it can change.</p>
-        </div>
-        <div class="govuk-input__wrapper"><span class="govuk-input__prefix" aria-hidden="true">£</span><input id="framework-support-form-procurement-amount-field" class="govuk-input govuk-input--width-5" aria-describedby="framework-support-form-procurement-amount-hint" type="text" name="framework_support_form[procurement_amount]"></div>
-      </div>
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+      {{ govukInput({
+        id: "procurement-cost",
+        name: "procurement-cost",
+        label: {
+          text: "Approximately how much will the school be spending on this procurement in total?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          html: '<p class="govuk-body">This is the approximate amount you will be spending over the lifetime of the contract. Use the value of a previous or existing contract if you are unsure.</p>
+          <p class="govuk-body">We only use this as a guide to understand the procurement better. We know it can change.</p>'
+      },
+        
+        prefix: {
+          text: "£"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
       </form>
 

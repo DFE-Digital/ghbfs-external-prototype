@@ -1,7 +1,10 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Do you know when your current contract ends? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +18,7 @@
     </span>
   </p>
 </div>
-  {{ govukBackLink({
+{{ govukBackLink({
   text: "Back",
   href: "javascript:window.history.back()"
 }) }}
@@ -23,83 +26,66 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="is-there-a-notice-period" method="post">
-        <span class="govuk-caption-l">About your current supplier </span>
+<form class="form" action="/triage/is-there-a-notice-period" method="post">
+  <span class="govuk-caption-l">About your current supplier</span>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <div class="govuk-form-group">
-              <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--l" for="account-number">
-                  Do you know when your current contract ends?
-                </label>
-              </h1>
 
-              <div class="govuk-form-group">
+{% set yesHtml %}
+{{ govukDateInput({
+  id: "contract-end-date",
+  namePrefix: "contract-end-date",
+  fieldset: {
+    legend: {
+      text: "Enter the current contract end date"
+    }
+  },
+  hint: {
+    text: "For example 31 8 2025"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  name: "contract-start-date",
+  fieldset: {
+    legend: {
+      text: "Do you know when your current contract ends?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
   
-                <div class="govuk-radios" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-                    <label class="govuk-label govuk-radios__label" for="contact">
-                      Yes
-                    </label>
-                  </div>
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-                    <div class="govuk-form-group">
-                      <div class="govuk-form-group"><label for="framework-support-form-special-requirements-field" class="govuk-label">Enter the current contract end date</label><div class="govuk-hint" id="framework-support-form-special-requirements-hint">For example 31 8 2025</div>
-                      
-                      <div class="govuk-date-input" id="passport-issued">
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                              Day
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
-                          </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                              Month
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
-                          </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                              Year
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
-                          </div>
-                     
-                        </div>
-                      </div>
-                    </div>
-                    
-                    </div>
-                     
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-                    <label class="govuk-label govuk-radios__label" for="contact-2">
-                      No
-                    </label>
-                  </div>
-                  
-                </div>
-              </fieldset>
-            </div>
-      
-              {{ govukButton({
-                text: "Continue"
-              }) }}
-      
-            </form>
-          </div>
-          </div>
-        </div>
-      {% endblock %}
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: yesHtml
+      }
+    },
+   
+    {
+      value: "no",
+      text: "No",
+      conditional: {
+        html: noHtml
+      }
+    }
+  ]
+}) }}
+
+
+ {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+
