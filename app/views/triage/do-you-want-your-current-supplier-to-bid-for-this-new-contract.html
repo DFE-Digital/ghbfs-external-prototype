@@ -47,6 +47,19 @@ Do you want your current supplier to be invited to bid for this new contract? â€
     
     }
   }) }}
+
+  {{ govukInput({
+    id: "invite-current-supplier",
+    name: "invite-current-supplier",
+    type: "Yes",
+    autocomplete: "yes",
+    spellcheck: false,
+    classes: "govuk-!-width-two-thirds",
+    label: {
+      text: "Telephone number"
+    
+    }
+  }) }}
   {% endset -%}
 
   
