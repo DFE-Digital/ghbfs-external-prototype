@@ -68,6 +68,10 @@ module.exports = router => {
   router.post('/triage/is-there-anything-else-we-should-know', (req, res) => {
     res.redirect('/triage/access-needs')
   })
+
+  router.post('/triage/documents-uploaded', (req, res) => {
+    res.redirect('/triage/is-there-anything-else-we-should-know')
+  })
   
 }
 
