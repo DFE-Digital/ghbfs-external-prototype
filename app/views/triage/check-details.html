@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+{% set title = "Is this your contact information?" %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/triage/choose-single-academy" method="post">
+        <span class="govuk-caption-l">About you</span>
+      
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>If these details are not correct, you can either:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>log in with the correct account, or</li>
+          <li><a href="https://pp-profile.signin.education.gov.uk/edit-details">amend your DfE Sign-in account details</a></li>
+        </ul>
+      
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Test User"
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: "admin@school.com"
+              }
+            },
+            {
+              key: {
+                text: "Telephone"
+              },
+              value: {
+                text: "02071235456"
+                
+                
+                
+              }
+            }
+          ]
+        }) }}
+        {{ govukRadios({
+          idPrefix: "correct-contact-details",
+          name: "correct-contact-details",
+          fieldset: {
+            legend: {
+             
+            }
+          },
+          hint: {
+            html: hint
+          },
+          items: [       
+          {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No, I need to login with a different account"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

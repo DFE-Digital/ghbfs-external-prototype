@@ -1,7 +1,9 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Are your floorplans ready to upload? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,6 +17,7 @@
     </span>
   </p>
 </div>
+
   {{ govukBackLink({
   text: "Back",
   href: "javascript:window.history.back()"
@@ -22,54 +25,41 @@
 {% endblock %}
 
 {% block content %}
+<form class="form" action="/triage/upload-your-documents" method="post">
+<span class="govuk-caption-l">About your request</span>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="/triage/upload-your-documents" method="post">
-
-      <span class="govuk-caption-l">About your request</span>
-
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="upload-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Can you upload floorplans for the schools?
-            </h1>
-          </legend>
-          <div id="upload-hint" class="govuk-hint">
-            This will help the supplier to understand the scope of the work 
-          </div>
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="upload" name="upload" type="radio" value="government-gateway" aria-describedby="upload-item-hint">
-              <label class="govuk-label govuk-radios__label" for="upload">
-                Yes
-              </label>
-              
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="upload-2" name="upload" type="radio" value="govuk-verify" aria-describedby="upload-2-item-hint">
-              <label class="govuk-label govuk-radios__label" for="upload-2">
-                Yes I can send them later
-              </label>
-              
-              <div id="upload-2-item-hint" class="govuk-hint govuk-radios__hint">
-                We will email you instructions on how to do this
-          </div>
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="upload-3" name="upload" type="radio" value="govuk-verify" aria-describedby="upload-3-item-hint">
-          <label class="govuk-label govuk-radios__label" for="upload-3">
-            No
-          </label>
-        
+{{ govukRadios({
+  id: "floorplans",
+  name: "floorplans",
+  fieldset: {
+    legend: {
+      text: "Are your floorplans ready to upload?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "This will help the supplier to understand the scope of the work "
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "send-floorplans-later",
+      text: "Yes I can send them later",
+      hint: {
+        text: "We will email you instructions on how to do this"
+      }
       
-    </div>
-            
-          </div>
-        </fieldset>
-      </div>
-          
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+    ]
+  }) }}   
 
  {{ govukButton({
     text: "Continue"

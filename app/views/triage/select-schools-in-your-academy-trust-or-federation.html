@@ -39,12 +39,12 @@ Which schools in your academy trust or federation will be involved in this procu
         
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-              <form class="form" action="/are-these-the-schools-youre-buying-for" method="post">
+              <form class="form" method="post">
                 <span class="govuk-caption-l">About your school</span>
               <h1 class="gem-c-heading govuk-heading-l govuk-!-margin-bottom-4">Which schools in your academy trust or federation will be involved in this procurement? <span class="govuk-visually-hidden">all content</span>
         </h1>
         <div><p class="govuk-body">Select all that apply</p>
-          <p class="govuk-body">If your school isn't shown, you can add it on the next page</p>
+        
         </div>
         </div>
         
@@ -286,15 +286,14 @@ Which schools in your academy trust or federation will be involved in this procu
                 
         
                 <table class="govuk-table">
-                  <caption class="govuk-table__caption govuk-table__caption--m">0 of 60 schools or colleges selected from REACH2 ACADEMY TRUST</caption>
-                 
+                  <p> <strong>0 </strong>of <strong>60 schools selected </strong>from Anytown Academy Trust,</p>                
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                       
                       <th scope="col" class="govuk-table__header app-custom-class"><div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input" id="countries" name="countries" type="checkbox" value="france">
-                        <label class="govuk-label govuk-checkboxes__label" for="countries">
-                          School name
+                        <label class="govuk-label govuk-checkboxes__label" for="countries"><strong>School name</strong> (select all)
+                          
                         </label>
                     </th>
                       <th scope="col" class="govuk-table__header app-custom-class">Address</th>
@@ -1247,15 +1246,15 @@ Which schools in your academy trust or federation will be involved in this procu
                                                             <td class="govuk-table__cell">Hertfordshire</td>
                                                           </tr>
                 </table>
-        
-                  {{ govukButton({
-                    text: "Continue"
-                  }) }}
-        
-      
               </div>
             </div>
+         
           </div>
+          <div class="govuk-grid-row"> 
+             {{ govukButton({
+            text: "Continue"
+          }) }}
+        </div>
         </form>
         
             </div>

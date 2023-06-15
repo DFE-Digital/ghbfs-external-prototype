@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -66,27 +66,28 @@
   
       
 
-      <p>Use this service if you’re a state-funded school in England and need free help with your school procurement.</p>
+      <p>Use this service if you're a state-funded school in England and need free help with your school procurement. </p>
 
-        <p>Our team of procurement specialists are able to able to offer:</p>
+        <p>Our team of procurement specialists can offer: </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>expert advice and guidance to make sure you’re buying compliantly at any point, even if your procurement is already in progress</li>
-        <li>review your documents to make sure they're complete and compliant. This includes advice on specification documents, tender documents and evaluation criteria</li>
-        <li>advice on choosing or using framework agreements </li>
+        <li>offer advice and guidance to make sure you're buying compliantly at any point, even if your procurement process is already in progress. </li>
+        <li>review your documents to make sure they're complete and compliant. This includes advice on specification documents, tender documents and evaluation criteria </li>
+        <li>support you on choosing or using a framework agreement for your procurement</li>
+        <li>advise when you need to seek legal advice</li>
       </ul>
 
-      <p>Our specialists may help to run complex or high value procurements if any of the following apply:</p>
+      <p>Our specialists may also offer to help run more complex or high value procurements. Some of the reasons they may offer to do this are:</p>
       
       <ul class="govuk-list govuk-list--bullet">
+        <li>when contracts are long term or multi-year </li>
+        <li>you're buying for multiple schools </li>
+        <li>the value is above the <a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools/find-the-right-way-to-buy#when-to-run-a-pcr-compliant-buying-process " class="govuk-link govuk-link--no-visited-state">public contracts regulations (PCR) threshold</a></li>
+        <li>the procurement requires inclusion of transferring personnel contracts under the Transfer of Undertakings (Protection of Employment) regulations (TUPE)</li>
+        <li>you're new or not experienced in running these types of procurements </li>
         <li>there are problems with supply or prices change regularly, for example energy costs</li>
         <li>it's challenging to find suppliers</li>
-        <li>contracts are long term or multi-year</li>
-        <li>the procurement requires the transfer of personnel contracts under the Transfer of Undertakings (Protection of Employment) regulations (TUPE)</li>
-        <li>you're buying for multiple schools</li>
-        <li>the value is above the public contracts regulations (PCR) threshold of £138,760 plus VAT  </li>
       </ul>
-      <p>They may also offer you extra help if you're new or not experienced in running these types of procurements.</p>
 
      
       <h2 class="govuk-heading-m">
@@ -103,12 +104,12 @@
       <li>the number of contracts you need, when they should start, and how long they'll be</li>
       <li>when your current contract ends</li>
       <li>the contact details of your current supplier, if you have one</li>
-      <li>any specifications you're aware of, for example if you're procuring a new cleaning contract, you might need to tell us how many classrooms need cleaning</li>
+      <li>any specifications you’re aware of, for example if you’re procuring a new cleaning contract, you might need to tell us how many classrooms need cleaning</li>
     </ul>
 
     {{ govukButton({
       text: "Start now",
-      href: "http://localhost:3000/triage/DfE-Sign-in-account",
+      href: "../triage/choose-signin",
       isStartButton: true
     }) }}
 
@@ -117,10 +118,11 @@
     </h2>
     <p>You can also:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>read information on finding the right route to buy what you need for your school</li>
+        <li>read information on <a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools"> </a>finding the right route to buy what you need for your school</li>
         <li>read about what to consider for specific goods and services</li>
-        <li>read about framework agreements</li>
-        <li>create a specification for catering or multi-functional devices if you don't have one yet </li>
+        <li>read <a href= "https://www.gov.uk/guidance/buying-for-schools" class="govuk-link govuk-link--no-visited-state"></a>about framework agreements</li>
+        <li> <a href= https://www.get-help-buying-for-schools.service.gov.uk> </a>create a specification for catering or multi-functional devices if you don't have one yet </li>
+          
       </ul>
   
     </div>

@@ -1,8 +1,5 @@
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
+{% set title = "Upload your documents" %}
 
 {% block beforeContent %}
 <div class="govuk-phase-banner">
@@ -19,59 +16,113 @@
   text: "Back",
   href: "javascript:window.history.back()"
 }) }}
+
+
+
+
+<style>
+  .upload-container {
+  }
+
+  .upload-container .upload-item {
+    //background-color: pink;
+    padding:16px;
+    margin: 16px 0;
+    border: 1px solid #b1b4b6;
+  }
+
+  .upload-container .upload-item.upload-item--error {
+    border: 2px solid #d4351c;
+    padding-bottom:32px; 
+  }
+
+  .upload-container .upload-item.upload-item--error p {
+    color: #d4351c;
+    font-weight:bold;
+  }
+
+  .upload-container .upload-item .upload-row  {
+    clear:both;
+    //margin-bottom:16px;
+  }
+
+  .upload-container .upload-item p {
+    float: left;
+    margin-bottom: 12px;
+  }
+
+  .upload-container .upload-item h3 {
+    float: left;
+    margin-bottom: 8px;
+  }
+
+  .upload-container .upload-item a {
+    float: right;
+  }
+</style>
+
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/triage/uploading-your-documents" method="post">
+      <span class="govuk-caption-l">About your request</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+      <p>Upload bills, site maps or floorplans you told us about.</p>
+      <p>Include specifications, quotes or any other documents that you feel are relevant to this procurement. If you cannot upload them now, you'll be able to provide them later.</p>
+          {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
 
-      <form class="form" action="your-files-have-been-uploaded" method="post">
-        <span class="govuk-caption-l">About your request</span>
+          <div class="moj-multi-file-upload">
+            <div class="moj-multi-file-upload__upload">
+              <div class="govuk-form-group">
+                <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+              </div>
 
-        <h1 class="govuk-heading-l" data-energy-bill-upload-target="title" aria-live="polite">
-          Upload your documents
-        </h1>
-        <p class="govuk-body" data-energy-bill-upload-target="lblHint">Upload bills, site maps or floorplans you told us about.</p>
-          <p class="govuk-body" data-energy-bill-upload-target="lblHint">
-Also include specifications, quotes or any other documents that you feel are relevant to this procurement.</p>
-        <div class="drop-zone-container govuk-!-margin-bottom-5" data-controller="dropzone" data-dropzone-list-files-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/list" data-dropzone-add-file-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/upload" data-dropzone-remove-file-url-value="https://www.get-help-buying-for-schools.service.gov.uk/procurement-support/bill_uploads/remove">
-    
+              <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">Upload file</button>
 
-          <div class="drop-zone govuk-!-margin-bottom-5" data-energy-bill-upload-target="dropZone">
-            <p class="govuk-body">Drag and drop files here or</p>
-      
-            <span class="govuk-button govuk-button--secondary dz-clickable" data-dropzone-target="btnDisplayFileDialog">
-              Choose files
-            </span>
-          </div>
-      
-          <div class="file-previews">
-            <div class="files-added-now govuk-!-margin-bottom-5 govuk-!-display-none" data-energy-bill-upload-target="filesAddedNow" data-dropzone-target="filePreview">
-              <h2 class="govuk-heading-m">
-                Files added
-              </h2>
-            </div>
-            <div class="upload-item dz-image-preview">        <div class="upload-row file-details">          <h3 class="govuk-heading-s"><span data-dz-name="">Screenshot 2023-04-25 at 16.02.57.png</span> (<span data-dz-size=""><strong>0.1</strong> MB</span>)</h3>          <a href="#" class="btn-remove govuk-link govuk-link--no-visited-state" data-dz-remove="">Remove</a>        </div>        <div class="upload-row progress-status-container">          <p class="govuk-body-s progress-status govuk-!-display-none" data-dz-errormessage=""></p>          <div class="upload-progress-container govuk-!-display-none">            <div data-dz-uploadprogress="" class="upload-progress" aria-valuenow="0"></div>          </div>        </div>      </div>
-      
-            <div class="files-added-before govuk-!-margin-bottom-5 govuk-!-display-none" data-energy-bill-upload-target="filesAddedBefore">
-              <h2 class="govuk-heading-m">
-                Files already uploaded
-              </h2>
+              <div class="moj-multi-file__uploaded-files ">
+                <h2 class="govuk-heading-m">Files added</h2>
+                <div class="govuk-summary-list moj-multi-file-upload__list"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <button id="btn-continue" class="govuk-button" data-action="click->energy-bill-upload#onContinueToUploadClicked" data-energy-bill-upload-target="btnContinue">
-          Continue to upload
-        </button>
-       
+          {% if data['files-already-uploaded'] %}
+          <h2 class="govuk-heading-m">Files already uploaded</h2>
+          <div class="upload-container">  
+            <div class="upload-item">
+              <div class="upload-row govuk-!-margin-bottom-4">
+                <h3 class="govuk-heading-s">File12345.png (2MB)</h3>
+              </div>
+            </div>
+            <div class="upload-item">
+              <div class="upload-row govuk-!-margin-bottom-4">
+                <h3 class="govuk-heading-s">File12345.png (2MB)</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
           
-        </div>
-      
 
-      </form>
-
+          {{ govukButton({
+            text: "Continue to upload"
+          }) }}
+          
+        </form>
     </div>
   </div>
+{% endblock %}
 
+{% block pageScripts %}
+<script src="/public/javascripts/multi-file-upload.js"></script>
+<script>
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: '/ajax-upload-url',
+    deleteUrl: '/ajax-delete-url'
+  });
+}
+</script>
 {% endblock %}

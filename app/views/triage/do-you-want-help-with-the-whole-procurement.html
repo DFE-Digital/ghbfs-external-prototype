@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Do you want help with the whole procurement? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,50 +15,51 @@
     </span>
   </p>
 </div>
-  {{ govukBackLink({
+{{ govukBackLink({
   text: "Back",
   href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/triage/how-long-do-you-want-the-contract-for" method="post">
+<form class="form" action="/triage/how-long-do-you-want-the-contract-for" method="post">
         <span class="govuk-caption-l">About your procurement</span>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Do you want help with the whole procurement?
-              </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="will-you-also-need-a-maintenance-contract" name="will-you-also-need-a-maintenance-contract" type="radio" value="Yes">
-                <label class="govuk-label govuk-radios__label" for="will-you-also-need-a-maintenance-contract">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="will-you-also-need-a-maintenance-contract2" name="will-you-also-need-a-maintenance-contract" type="radio" value="No">
-                <label class="govuk-label govuk-radios__label" for="will-you-also-need-a-maintenance-contract-2">
-                  No
-                </label>
-            </div>
-          </fieldset>
-          
-        </div>
-       {{ govukButton({
-          text: "Continue"
-        }) }}
 
-      </form>
+{{ govukRadios({
+  name: "help-whole-procurement",
+  fieldset: {
+    legend: {
+      text: "Do you want help with the whole procurement?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    
+    {
+      value: "No",
+      text: "No"
+    }
+    ]
+  }) }}   
 
-    </div>
-  </div>
+ {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+</div>
+</div>
 
 {% endblock %}
+

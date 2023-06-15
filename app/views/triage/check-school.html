@@ -1,0 +1,114 @@
+{% extends "layouts/main.html" %}
+{% set title = "Is this the school you're buying for?" %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <span class="govuk-caption-l">About your school</span>
+        {% set hint %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Name and Address"
+                },
+                value: {
+                  html: (data['establishment-name'] or 'Anytown High School' ) + ",<br>Anytown Road, Anytown,<br>London," + (data['establishment-postcode'] or 'W2 4TH')
+                }
+              },
+              {
+                key: {
+                  text: "Local authority"
+                },
+                value: {
+                  text: "Hackney"
+                }
+              },
+              {
+                key: {
+                  text: "Headteacher/ Principal"
+                },
+                value: {
+                  text: "Ms Jane Smith"
+                }
+              },
+              {
+                key: {
+                  text: "Phase of education"
+                },
+                value: {
+                  text: "Primary"
+                }
+              },
+              {
+                key: {
+                  text: "School type"
+                },
+                value: {
+                  text: "Community school"
+                }
+              },
+              {
+                key: {
+                  text: "ID"
+                },
+                value: {
+                  html: "URN: " + (data['establishment-urn'] or '100235') + "</br>DfE number: 204/2487</br>UKPRN: 10078028"
+                }
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "correct-school",
+          name: "correct-school",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: hint
+          },
+          items: [       
+          {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No, I need to choose another school"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

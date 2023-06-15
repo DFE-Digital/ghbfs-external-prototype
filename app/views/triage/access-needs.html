@@ -1,8 +1,8 @@
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Accessibility – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% set title = "Do you have any access needs that we need to be aware of when we contact you?" %}
 
 {% block beforeContent %}
 <div class="govuk-phase-banner">
@@ -22,36 +22,66 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <form class="form" action="/triage/check-your-answers" method="post">
+      <form class="form" method="post">
         <span class="govuk-caption-l">Accessibility</span>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Do you have any access needs that we need to be aware of when we contact you? 
-              </h1>
-            </legend>
-            <div class="govuk-hint" id="framework-support-form-special-requirements-choice-hint">We’ll contact you by email first. If we need more information we’ll arrange a video call with you later. Let us know if either of these need to be made accessible to you and how you’d like us to do that.</div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item"><input id="framework-support-form-special-requirements-choice-yes-field" class="govuk-radios__input" type="radio" value="yes" name="framework_support_form[special_requirements_choice]" aria-controls="framework-support-form-special-requirements-choice-yes-conditional" aria-expanded="true"><label for="framework-support-form-special-requirements-choice-yes-field" class="govuk-label govuk-radios__label">Yes</label></div><div class="govuk-radios__conditional" id="framework-support-form-special-requirements-choice-yes-conditional">
-                <div class="govuk-form-group"><label for="framework-support-form-special-requirements-field" class="govuk-label">Tell us about your access needs</label><div class="govuk-hint" id="framework-support-form-special-requirements-hint">For example, I have difficulty hearing so I cannot do video calls</div><textarea id="framework-support-form-special-requirements-field" class="govuk-textarea" rows="3" aria-describedby="framework-support-form-special-requirements-hint" name="framework_support_form[special_requirements]"></textarea></div>
-      </div>        <div class="govuk-radios__item"><input id="framework-support-form-special-requirements-choice-no-field" class="govuk-radios__input" type="radio" value="no" name="framework_support_form[special_requirements_choice]"><label for="framework-support-form-special-requirements-choice-no-field" class="govuk-label govuk-radios__label">No</label></div>
-      </div>
-          </fieldset>
+     
           
-        </div>
-       {{ govukButton({
+
+        {% set phoneHtml %}
+        {{ govukTextarea({
+          id: "access-needs",
+          name: "access-needs",
+          type: "tel",
+          autocomplete: "details",
+          classes: "govuk-!-textarea",
+          rows: "3",
+          label: {
+            text: "Tell us about your access needs"
+          },
+          hint: {
+            text: "For example, I have difficulty hearing so I cannot do video calls"
+          }
+        }) }}
+        {% endset -%}
+        
+        
+        
+        {{ govukRadios({
+          idPrefix: "access-details",
+          name: "access-details",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "We’ll contact you by email first. If we need more information we’ll arrange a video call with you later. Let us know if either of these need to be made accessible to you and how you’d like us to do that."
+          },
+          items: [
+            
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: phoneHtml
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
           text: "Continue"
         }) }}
 
       </form>
-
     </div>
   </div>
-
 {% endblock %}

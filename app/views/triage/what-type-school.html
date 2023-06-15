@@ -2,10 +2,20 @@
 {% set title = "What type of organisation are you buying for?" %}
 
 {% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
   {{ govukBackLink({
-    text: "Back",
-    href: "/support/choose-signin"
-  }) }}
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -18,8 +28,8 @@
         {% endset %}
 
         {{ govukRadios({
-          idPrefix: "what-type-of-organisation-are-you-buying-for",
-          name: "what-type-of-organisation-are-you-buying-for",
+          idPrefix: "type-organisation",
+          name: "type-organisation",
           fieldset: {
             legend: {
               text: title,
